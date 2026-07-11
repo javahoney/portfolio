@@ -25,9 +25,21 @@ const projectEntries = await getCollection("projects");
 const projects = projectEntries
 	.map((entry) => ({ id: entry.id, ...entry.data }))
 	.sort((a, b) => a.order - b.order);
+
+const description =
+	"Conception de sites vitrines performants pour indépendants et petites entreprises. Un process clair, du design à la mise en ligne, et une autonomie totale pour piloter votre site une fois livré.";
+
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Alexandre Lobo",
+	jobTitle: "Web Designer & Developer",
+	url: "https://alexandre-lobo.com",
+	sameAs: ["https://www.linkedin.com/in/alexandre-lobo-274890326"],
+};
 ---
 
-<Layout title="Alexandre">
+<Layout title="Alexandre Lobo — Sites vitrines performants, pilotés en autonomie" description={description} structuredData={personSchema}>
 	<Nav />
 
 	<main>

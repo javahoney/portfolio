@@ -17,11 +17,61 @@ const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
 
 const description =
 	"Production Webflow & Framer en marque blanche pour agences : intégration, SEO technique de base et délais tenus, une seule personne à briefer.";
+
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	serviceType: "Web Development",
+	description,
+	provider: {
+		"@type": "Person",
+		name: "Alexandre Lobo",
+		url: "https://alexandre-lobo.com",
+	},
+	areaServed: "France",
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Formules de production Webflow / Framer",
+		itemListElement: [
+			{
+				"@type": "Offer",
+				itemOffered: { "@type": "Service", name: "Landing page" },
+				priceSpecification: {
+					"@type": "PriceSpecification",
+					minPrice: 500,
+					maxPrice: 1000,
+					priceCurrency: "EUR",
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: { "@type": "Service", name: "Site 3–5 pages" },
+				priceSpecification: {
+					"@type": "PriceSpecification",
+					minPrice: 1000,
+					maxPrice: 2000,
+					priceCurrency: "EUR",
+				},
+			},
+			{
+				"@type": "Offer",
+				itemOffered: { "@type": "Service", name: "Site + CMS" },
+				priceSpecification: {
+					"@type": "PriceSpecification",
+					minPrice: 1500,
+					maxPrice: 3000,
+					priceCurrency: "EUR",
+				},
+			},
+		],
+	},
+};
 ---
 
 <Layout
 	title="Offre agence — Production Webflow / Framer en marque blanche | Alexandre Lobo"
 	description={description}
+	structuredData={serviceSchema}
 >
 	<header class="mb-header">
 		<div class="mb-header__inner">

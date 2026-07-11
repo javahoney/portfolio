@@ -3,9 +3,13 @@ interface Props {
 	title: string;
 	description?: string;
 	image?: string;
+	structuredData?: Record<string, unknown> | string;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, structuredData } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const structuredDataJson =
+	typeof structuredData === "string" ? structuredData : structuredData ? JSON.stringify(structuredData) : undefined;
 ---
 
 <html lang="fr">
@@ -17,11 +21,13 @@ const { title, description, image } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
+		<link rel="canonical" href={canonicalURL} />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
 		{description && <meta property="og:description" content={description} />}
 		{image && <meta property="og:image" content={image} />}
+		{structuredDataJson && <script type="application/ld+json" set:html={structuredDataJson} />}
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
