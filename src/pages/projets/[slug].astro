@@ -1,0 +1,286 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+
+export async function getStaticPaths() {
+	const projectEntries = await getCollection("projects");
+	const sorted = [...projectEntries].sort((a, b) => a.data.order - b.data.order);
+
+	return sorted.map((entry, index) => {
+		const prev = sorted[(index - 1 + sorted.length) % sorted.length];
+		const next = sorted[(index + 1) % sorted.length];
+
+		return {
+			params: { slug: entry.id },
+			props: {
+				entry,
+				prevId: prev.id,
+				prevName: prev.data.name,
+				nextId: next.id,
+				nextName: next.data.name,
+			},
+		};
+	});
+}
+
+const { entry, prevId, nextId } = Astro.props;
+const project = entry.data;
+const { Content } = await render(entry);
+
+const galleryIndexes = [0, 1, 2];
+---
+
+<Layout title={`${project.name} — Alexandre Lobo`}>
+	<Nav />
+
+	<main>
+		<div class="project-hero">
+			<a class="navlink back-link" href="/">← Retour</a>
+
+			<h1 class="project-title">{project.name}</h1>
+
+			<div class="meta-columns">
+				<div class="meta-col">
+					<p class="eyebrow">Aperçu</p>
+					<p class="meta-col__text">{project.overview}</p>
+				</div>
+
+				<div class="meta-col">
+					<p class="eyebrow">Services</p>
+					<div class="meta-services">
+						{project.services.map((service, i) => (
+							<Fragment>
+								<span>{service}</span>
+								{i < project.services.length - 1 && <span class="diamond" aria-hidden="true"></span>}
+							</Fragment>
+						))}
+					</div>
+				</div>
+
+				{project.liveUrl && (
+					<div class="meta-col">
+						<p class="eyebrow">Lien</p>
+						<a class="text-link" href={project.liveUrl} target="_blank" rel="noopener noreferrer">Voir en live →</a>
+					</div>
+				)}
+			</div>
+		</div>
+
+		<div class="gallery section">
+			<div class="gallery__main">
+				{project.mainImage ? (
+					<img src={project.mainImage} alt={project.name} />
+				) : (
+					<div class="gallery__placeholder" aria-hidden="true"></div>
+				)}
+			</div>
+
+			<div class="gallery__grid">
+				{galleryIndexes.map((i) => (
+					<div class="gallery__item">
+						{project.galleryImages?.[i] ? (
+							<img src={project.galleryImages[i]} alt="" />
+						) : (
+							<div class="gallery__placeholder" aria-hidden="true"></div>
+						)}
+					</div>
+				))}
+			</div>
+		</div>
+
+		<div class="section">
+			<SectionTitle text="Le projet" />
+
+			<div class="project-body">
+				<Content />
+			</div>
+		</div>
+
+		<div class="section">
+			<nav class="pager">
+				<a class="navlink" href={`/projets/${prevId}`}>← Projet précédent</a>
+				<a class="navlink" href={`/projets/${nextId}`}>Voir un autre projet →</a>
+			</nav>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.project-hero {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 96px 48px 64px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 24px;
+	}
+
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.project-title {
+		margin: 0;
+		font-family: "Cormorant Garamond", serif;
+		font-weight: 600;
+		letter-spacing: -0.04em;
+		line-height: 1.02;
+		color: #00259e;
+		font-size: clamp(3.5rem, 8vw, 4.5rem);
+	}
+
+	.meta-columns {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 40px 64px;
+		width: 100%;
+	}
+
+	.meta-col {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		flex: 1;
+		min-width: 200px;
+	}
+
+	.meta-col__text {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.meta-services {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 8px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.gallery {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.gallery__main {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+	}
+
+	.gallery__main img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+	}
+
+	.gallery__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+	}
+
+	.gallery__item {
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+	}
+
+	.gallery__item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+	}
+
+	.gallery__placeholder {
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, #dde5f0, #c2cee0);
+	}
+
+	.project-body {
+		max-width: 700px;
+		margin-left: auto;
+	}
+
+	.project-body :global(h3) {
+		margin: 40px 0 16px;
+		font-family: "Cormorant Garamond", serif;
+		font-weight: 600;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.project-body :global(h3:first-child) {
+		margin-top: 0;
+	}
+
+	.project-body :global(p) {
+		margin: 0 0 24px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.project-body :global(p:last-child) {
+		margin-bottom: 0;
+	}
+
+	.pager {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+	}
+
+	@media (max-width: 640px) {
+		.project-hero {
+			padding: 64px 24px 40px;
+		}
+
+		.meta-columns {
+			flex-direction: column;
+			gap: 24px;
+		}
+
+		.gallery__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.project-body {
+			margin-left: 0;
+		}
+
+		.pager {
+			flex-direction: column;
+			align-items: stretch;
+			text-align: center;
+		}
+	}
+</style>

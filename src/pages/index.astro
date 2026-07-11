@@ -22,7 +22,7 @@ const whatsappHref = `https://wa.me/33773532515?text=${encodeURIComponent(whatsa
 
 const projectEntries = await getCollection("projects");
 const projects = projectEntries
-	.map((entry) => entry.data)
+	.map((entry) => ({ id: entry.id, ...entry.data }))
 	.sort((a, b) => a.order - b.order);
 ---
 
@@ -69,13 +69,13 @@ const projects = projectEntries
 
 				<div class="projects">
 					{projects.map((project) => (
-						<article class="project">
+						<a class="project" href={`/projets/${project.id}`}>
 							<div class="project__media">
 								<div class="project__media-inner"></div>
 							</div>
 							<h3 class="project__name">{project.name}</h3>
 							<p class="project__meta">{project.category}</p>
-						</article>
+						</a>
 					))}
 				</div>
 			</section>
@@ -309,6 +309,12 @@ const projects = projectEntries
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
 				gap: 16px;
+			}
+
+			.project {
+				display: block;
+				text-decoration: none;
+				color: inherit;
 			}
 
 			.project__media {

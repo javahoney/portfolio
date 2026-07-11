@@ -1,0 +1,40 @@
+---
+---
+
+<header class="nav">
+	<div class="nav__inner">
+		<nav class="nav__links">
+			<a class="navlink" href="/#projets">Projets</a>
+			<a class="navlink" href="/#approche">Approche</a>
+			<a class="navlink" href="/#contact">Me contacter</a>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.nav__inner {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 24px 48px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	.nav__links {
+		display: flex;
+		gap: 8px;
+	}
+
+	@media (max-width: 640px) {
+		.nav__inner {
+			padding: 16px 24px;
+		}
+
+		.nav__links {
+			gap: 8px;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+		}
+	}
+</style>
