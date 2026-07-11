@@ -1,0 +1,32 @@
+---
+interface Props {
+	text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class="compact-label">
+	<span class="compact-label__line" aria-hidden="true"></span>
+	<p class="compact-label__text eyebrow">{text}</p>
+</div>
+
+<style>
+	.compact-label {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		margin-bottom: 24px;
+	}
+
+	.compact-label__line {
+		width: 18px;
+		height: 2px;
+		background: #00259e;
+		flex-shrink: 0;
+	}
+
+	.compact-label__text {
+		margin: 0;
+	}
+</style>

@@ -6,7 +6,6 @@ const projects = defineCollection({
 	schema: z.object({
 		name: z.string(),
 		category: z.string(),
-		image: z.string().optional(),
 		order: z.number(),
 		overview: z.string(),
 		services: z.array(z.string()),

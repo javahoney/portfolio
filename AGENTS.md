@@ -33,6 +33,7 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - Fond secondaire : #00259E → texte et titres en blanc (#FFFFFF) par-dessus
 - Texte courant (corps) : #333333 sur fond clair #FAFAFA
 - Texte secondaire : #B1BCE0 — réservé aux textes ≥1.125rem ou décoratifs (numérotation, index)
+- Gris hairline : #e5e5e5 — bordures fines, filets de séparation, séparateurs de listes et cadres (tableaux, cartes)
 
 ### Forme
 - Radius : 0, aucun arrondi nulle part (boutons, cartes, cadres, images)
@@ -42,7 +43,7 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 ### Espacement et mise en page
 - Échelle d'espacement : multiples de 8px (8/16/24/40/64/96/160)
 - Entre sections : 96 à 160px
-- Largeur max du contenu : 1400px centré, padding 48px desktop / 24px mobile
+- Largeur max du contenu : 1400px centré, padding 48px desktop / 12px mobile
 - Images : formats généreux, gap resserré (16px) entre elles dans une même grille
 
 ### Boutons et CTA
