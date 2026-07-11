@@ -82,7 +82,7 @@ const galleryIndexes = [0, 1, 2];
 				{galleryIndexes.map((i) => (
 					<div class="gallery__item">
 						{project.galleryImages?.[i] ? (
-							<img src={project.galleryImages[i]} alt="" />
+							<img src={project.galleryImages[i]} alt={`${project.name} — visuel ${i + 1}`} />
 						) : (
 							<div class="gallery__placeholder" aria-hidden="true"></div>
 						)}

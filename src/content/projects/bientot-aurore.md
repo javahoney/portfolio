@@ -5,6 +5,8 @@ order: 3
 overview: "Accompagnement individuel et collectif spécialisé dans le deuil et les transitions de vie majeures."
 services: ["Conception web", "Branding"]
 liveUrl: "https://bientot-laurore.fr/"
+mainImage: "/images/projects/bientot-laurore-main.webp"
+galleryImages: ["/images/projects/bientot-laurore-1.webp", "/images/projects/bientot-laurore-2.webp", "/images/projects/bientot-laurore-3.webp"]
 ---
 
 Géraldine accompagne des personnes traversant des épreuves de vie majeures — deuil, séparation, renoncement. Son problème : aucune présence en ligne dans un secteur où la confiance se construit avant même le premier rendez-vous.

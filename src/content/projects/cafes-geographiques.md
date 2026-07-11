@@ -5,6 +5,8 @@ order: 2
 overview: "Les Cafés Géographiques réunissent chaque mois curieux et experts pour débattre de géographie et de géopolitique. À Paris et en province, depuis 1999. Plus de 1 000 articles, 320 lecteurs par jour."
 services: ["Prototypage", "Refonte", "Design system", "UI/UX", "Prototypes interactifs"]
 liveUrl: "https://cafes-geo-maquette-v2.netlify.app/"
+mainImage: "/images/projects/cafegeo-main.webp"
+galleryImages: ["/images/projects/cafegeo-1.webp", "/images/projects/cafegeo-2.webp", "/images/projects/cafegeo-3.webp"]
 ---
 
 Les Cafés Géographiques réunissent depuis 1999 amateurs et passionnés autour de débats géographiques et géopolitiques. Leur site, cafe-geo.net, c'est plus de 1 000 articles, 320 visites par jour, et une mémoire vivante de 25 ans de conférences. Le problème : un WordPress 5.6 sous un thème abandonné depuis des années, une navigation devenue ingérable, et un site invisible sur mobile.

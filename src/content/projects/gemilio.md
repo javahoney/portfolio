@@ -5,6 +5,8 @@ order: 1
 overview: "Négoce de pierres précieuses et fines pour les professionnels de la bijouterie et de la joaillerie."
 services: ["Conception web", "Branding", "Logo design", "SEO"]
 liveUrl: "https://www.gemilio.fr/"
+mainImage: "/images/projects/gemilio-main.webp"
+galleryImages: ["/images/projects/gemilio-1.webp", "/images/projects/gemilio-2.webp", "/images/projects/gemilio-3.webp"]
 ---
 
 Jérôme Saglio source des gemmes aux quatre coins du monde. Son problème : aucune présence en ligne pour montrer ses pierres. Dans un secteur où l'image est tout.

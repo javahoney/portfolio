@@ -5,6 +5,8 @@ order: 4
 overview: "Entreprise de nettoyage haut de gamme et éco-certifiée, intervenant auprès des particuliers et professionnels en Île-de-France."
 services: ["Prototypage", "Design system", "UI/UX", "Prototypes interactifs"]
 liveUrl: "https://kom-jm.netlify.app/"
+mainImage: "/images/projects/komjm-main.webp"
+galleryImages: ["/images/projects/komjm-1.webp", "/images/projects/komjm-2.webp", "/images/projects/komjm-3.webp"]
 ---
 
 KOM JM proposait des prestations de nettoyage premium et éco-certifiées en Île-de-France. Zéro présence en ligne pour le prouver, et une conséquence directe : pas de demandes de devis entrantes.
