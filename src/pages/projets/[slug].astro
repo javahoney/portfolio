@@ -101,8 +101,8 @@ const galleryIndexes = [0, 1, 2];
 
 		<div class="section">
 			<nav class="pager">
-				<a class="navlink" href={`/projets/${prevId}`}>← Projet précédent</a>
-				<a class="navlink" href={`/projets/${nextId}`}>Voir un autre projet →</a>
+				<a class="navlink pager__link pager__link--prev" href={`/projets/${prevId}`}>← Projet précédent</a>
+				<a class="navlink pager__link pager__link--next" href={`/projets/${nextId}`}>Voir un autre projet →</a>
 			</nav>
 		</div>
 	</main>
@@ -261,12 +261,20 @@ const galleryIndexes = [0, 1, 2];
 
 	@media (max-width: 640px) {
 		.project-hero {
-			padding: 64px 24px 40px;
+			padding: 64px 12px 40px;
+		}
+
+		.project-title {
+			font-size: 3rem;
 		}
 
 		.meta-columns {
 			flex-direction: column;
 			gap: 24px;
+		}
+
+		.gallery__main {
+			aspect-ratio: 1 / 1;
 		}
 
 		.gallery__grid {
@@ -278,9 +286,11 @@ const galleryIndexes = [0, 1, 2];
 		}
 
 		.pager {
-			flex-direction: column;
-			align-items: stretch;
-			text-align: center;
+			justify-content: center;
+		}
+
+		.pager__link--prev {
+			display: none;
 		}
 	}
 </style>
