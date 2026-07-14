@@ -1,7 +1,7 @@
 ---
 name: "KOM JM"
 category: "Prototypage"
-order: 4
+order: 6
 overview: "Entreprise de nettoyage haut de gamme et éco-certifiée, intervenant auprès des particuliers et professionnels en Île-de-France."
 services: ["Prototypage", "Design system", "UI/UX", "Prototypes interactifs"]
 liveUrl: "https://kom-jm.netlify.app/"
