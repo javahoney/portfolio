@@ -87,3 +87,18 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## Roadmap / Évolutions prévues
+
+### Home page en page de vente (pas encore planifié, juste noté)
+Idée à explorer plus tard : transformer la home page en véritable
+page de vente (landing page orientée conversion/prise de contact),
+et déplacer le portfolio complet (tous les projets) vers une page
+secondaire dédiée (ex. /projets ou /portfolio).
+- La home garderait 0 à 4 projets en aperçu (nombre exact à
+  déterminer), ou aucun visuel de projet du tout — à la place, un
+  bouton clair du type "Voir mes projets" qui renvoie vers la page
+  secondaire.
+- Pas encore de brief détaillé sur le contenu de cette nouvelle home
+  (accroche, preuve sociale, CTA) — à définir quand on s'y attaquera.
+- Aucune urgence, juste une intention à ne pas perdre.
