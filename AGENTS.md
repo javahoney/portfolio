@@ -27,8 +27,8 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - Jamais de gras lourd (700+) nulle part
 
 ### Couleurs
-- Primaire : #00259E (bleu foncé) — fond des sections fortes, texte/titres blancs par-dessus, aussi couleur des titres et boutons secondaires sur fond clair
-- Secondaire : #ECF7E4 (vert très pâle) — fond des boutons primaires/CTA et navlinks, sur n'importe quel fond de section
+- Primaire : #00259E (bleu foncé) — fond des sections fortes, texte/titres blancs par-dessus, aussi couleur des titres, fond des boutons/navlinks standards (fond clair) et texte des boutons secondaires
+- Secondaire : #ECF7E4 (vert très pâle) — hover des boutons/navlinks sur fond foncé (voir Boutons et CTA), fond des badges/icônes d'accent (ex. option-card__badge, scope-bullet--check) — jamais en fond de section ou bloc de texte
 - Fond principal : #FAFAFA
 - Fond secondaire : #00259E → texte et titres en blanc (#FFFFFF) par-dessus
 - Texte courant (corps) : #333333 sur fond clair #FAFAFA
@@ -47,13 +47,18 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - Images : formats généreux, gap resserré (16px) entre elles dans une même grille
 
 ### Boutons et CTA
-- Bouton primaire / CTA : fond #ECF7E4, texte #00259E, Montserrat 600, 0.875rem, MAJUSCULES, letter-spacing +0.08em, padding 12px 24px, quel que soit le fond
-- Bouton secondaire : fond blanc plein #FFFFFF (jamais transparent), bordure 1px #00259E, texte #00259E, quel que soit le fond
-- Hover (tous boutons) : fond #00259E, texte blanc, bordure #00259E, transition 0.2-0.3s ease-out
+Base commune (toutes variantes) : Montserrat 600, 0.875rem, MAJUSCULES, letter-spacing +0.08em, padding 12px 24px, radius 0, transition 0.2-0.3s ease-out.
+
+- **Bouton primaire / CTA — fond clair** (classe `.btn--primary`) : à utiliser quand le bouton repose sur un fond clair (#FAFAFA) ou sans fond de section défini. Fond #00259E, texte blanc. Hover : fond #001E7E (bleu ~20% plus foncé), texte blanc inchangé.
+- **Bouton primaire / CTA — fond foncé** (classe `.btn--on-dark`) : à utiliser quand le bouton repose sur une section à fond #00259E (ou proche) — sinon le bouton `.btn--primary` devient invisible (bleu sur bleu). Fond blanc #FFFFFF, texte #00259E. Hover : fond #ECF7E4 (vert clair), texte #00259E inchangé (jamais blanc, pour rester lisible sur fond clair).
+  - Cas d'usage actuel : CTA du footer de `marque-blanche.astro` (`.mb-footer`, fond #00259E).
+  - Même logique pour les boutons icône seule sur fond foncé (ex. icônes réseaux `.footer__social` / `.mb-footer__social`) : fond blanc/icône #00259E au repos, fond #ECF7E4/icône #00259E au hover — jamais de hover à #00259E, qui se fondrait dans le fond de section.
+- Bouton secondaire : fond blanc plein #FFFFFF (jamais transparent), bordure 1px #00259E, texte #00259E, quel que soit le fond. Hover : fond #00259E, texte blanc, bordure #00259E.
 
 ### Navigation
-- Navlinks : même style que bouton primaire mais plus petit — 0.75rem, padding 8px 16px
-- Hover navlinks : fond #00259E, texte blanc
+- Navlinks : même principe que les boutons primaires, avec les deux mêmes variantes selon le fond — plus petit : 0.75rem, padding 8px 16px.
+  - **Fond clair** (classe `.navlink`) : fond #00259E, texte blanc. Hover : fond #001E7E, texte blanc.
+  - **Fond foncé** : pas de classe dédiée à ce jour (aucun navlink actuel n'est posé sur fond foncé) — réutiliser `.btn--on-dark` en cas de besoin futur, ou créer `.navlink--on-dark` sur le même modèle (fond blanc/texte #00259E, hover fond #ECF7E4/texte #00259E).
 
 ### Liens texte (dans le corps)
 - Couleur #00259E, soulignement fin (underline-offset 3-4px), hover : soulignement plus épais
@@ -70,9 +75,9 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 ### Principes d'application
 - Ne jamais introduire une couleur hors charte sans accord explicite
-- #ECF7E4 réservée aux boutons primaires/CTA et navlinks — jamais en fond de section ou bloc de texte
-- Sur fond #FAFAFA : titres en #00259E, corps en #333333
-- Sur fond #00259E : titres et corps en blanc, sauf boutons/CTA qui restent #ECF7E4/#00259E, et boutons secondaires qui restent blancs
+- #ECF7E4 réservée au hover des boutons/navlinks sur fond foncé et aux badges/icônes d'accent — jamais en fond de section ou bloc de texte
+- Sur fond #FAFAFA : titres en #00259E, corps en #333333, boutons/navlinks en variante fond clair (`.btn--primary` / `.navlink`)
+- Sur fond #00259E : titres et corps en blanc, boutons/CTA en variante fond foncé (`.btn--on-dark`, blanc/#00259E), et boutons secondaires qui restent blancs
 - Le letter-spacing -0.04 s'applique aux titres, -0.03 au corps de texte
 
 ## Documentation
