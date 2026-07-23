@@ -56,32 +56,47 @@ const creativeWorkSchema = {
 		<div class="project-hero">
 			<a class="navlink back-link" href="/">← Retour</a>
 
-			<h1 class="project-title">{project.name}</h1>
-
-			<div class="meta-columns">
-				<div class="meta-col">
-					<p class="eyebrow">Aperçu</p>
-					<p class="meta-col__text">{project.overview}</p>
-				</div>
-
-				<div class="meta-col">
-					<p class="eyebrow">Services</p>
-					<div class="meta-services">
-						{project.services.map((service, i) => (
-							<Fragment>
-								<span>{service}</span>
-								{i < project.services.length - 1 && <span class="diamond" aria-hidden="true"></span>}
-							</Fragment>
-						))}
-					</div>
-				</div>
-
-				{project.liveUrl && (
-					<div class="meta-col">
-						<p class="eyebrow">Lien</p>
-						<a class="text-link" href={project.liveUrl} target="_blank" rel="noopener noreferrer">Voir en live →</a>
-					</div>
+			<div class="project-hero__row">
+				{project.testimonial && (
+					<figure class="testimonial">
+						<blockquote class="testimonial__quote">«&nbsp;{project.testimonial.quote}&nbsp;»</blockquote>
+						<figcaption class="testimonial__attribution">
+							<span class="testimonial__author">{project.testimonial.author}</span>
+							{project.testimonial.role && <span class="diamond" aria-hidden="true"></span>}
+							{project.testimonial.role && <span class="testimonial__role">{project.testimonial.role}</span>}
+						</figcaption>
+					</figure>
 				)}
+
+				<div class="project-hero__main">
+					<h1 class="project-title">{project.name}</h1>
+
+					<div class="meta-columns">
+						<div class="meta-col">
+							<p class="eyebrow">Aperçu</p>
+							<p class="meta-col__text">{project.overview}</p>
+						</div>
+
+						<div class="meta-col">
+							<p class="eyebrow">Services</p>
+							<div class="meta-services">
+								{project.services.map((service, i) => (
+									<Fragment>
+										<span>{service}</span>
+										{i < project.services.length - 1 && <span class="diamond" aria-hidden="true"></span>}
+									</Fragment>
+								))}
+							</div>
+						</div>
+
+						{project.liveUrl && (
+							<div class="meta-col">
+								<p class="eyebrow">Lien</p>
+								<a class="text-link" href={project.liveUrl} target="_blank" rel="noopener noreferrer">Voir en live →</a>
+							</div>
+						)}
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -141,6 +156,62 @@ const creativeWorkSchema = {
 		display: inline-flex;
 		align-items: center;
 		gap: 8px;
+	}
+
+	.project-hero__row {
+		display: flex;
+		align-items: flex-start;
+		gap: 64px;
+		width: 100%;
+	}
+
+	.project-hero__main {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		flex: 1;
+		min-width: 0;
+	}
+
+	.testimonial {
+		margin: 0;
+		flex: 0 0 280px;
+		padding-left: 24px;
+		border-left: 2px solid #00259e;
+	}
+
+	.testimonial__quote {
+		margin: 0 0 16px;
+		font-family: "Cormorant Garamond", serif;
+		font-style: italic;
+		font-weight: 600;
+		letter-spacing: -0.04em;
+		line-height: 1.3;
+		font-size: 1.25rem;
+		color: #00259e;
+	}
+
+	.testimonial__attribution {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		flex-wrap: wrap;
+	}
+
+	.testimonial__author {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		font-size: 0.875rem;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.testimonial__role {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		letter-spacing: -0.03em;
+		color: #5a6488;
 	}
 
 	.project-title {
@@ -282,6 +353,20 @@ const creativeWorkSchema = {
 
 		.project-title {
 			font-size: 3rem;
+		}
+
+		.project-hero__row {
+			flex-direction: column;
+			gap: 24px;
+		}
+
+		.project-hero__main {
+			order: 1;
+		}
+
+		.testimonial {
+			order: 2;
+			flex-basis: auto;
 		}
 
 		.meta-columns {

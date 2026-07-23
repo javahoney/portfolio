@@ -12,6 +12,13 @@ const projects = defineCollection({
 		liveUrl: z.string().optional(),
 		mainImage: z.string().optional(),
 		galleryImages: z.array(z.string()).length(3).optional(),
+		testimonial: z
+			.object({
+				quote: z.string(),
+				author: z.string(),
+				role: z.string().optional(),
+			})
+			.optional(),
 	}),
 });
 
