@@ -7,6 +7,10 @@ services: ["Conception web", "Branding"]
 liveUrl: "https://bientot-laurore.fr/"
 mainImage: "/images/projects/bientot-laurore-main.webp"
 galleryImages: ["/images/projects/bientot-laurore-1.webp", "/images/projects/bientot-laurore-2.webp", "/images/projects/bientot-laurore-3.webp"]
+testimonial:
+  quote: "Alexandre a été extrêmement à l'écoute et pédagogue. Il m'a vraiment accompagné dans ce projet, je le recommande chaleureusement."
+  author: "Géraldine"
+  role: "Fondatrice, Bientôt l'aurore"
 ---
 
 Géraldine accompagne des personnes traversant des épreuves de vie majeures — deuil, séparation, renoncement. Son problème : aucune présence en ligne dans un secteur où la confiance se construit avant même le premier rendez-vous.

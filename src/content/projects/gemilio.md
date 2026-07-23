@@ -7,6 +7,10 @@ services: ["Conception web", "Branding", "Logo design", "SEO"]
 liveUrl: "https://www.gemilio.fr/"
 mainImage: "/images/projects/gemilio-main.webp"
 galleryImages: ["/images/projects/gemilio-1.webp", "/images/projects/gemilio-2.webp", "/images/projects/gemilio-3.webp"]
+testimonial:
+  quote: "J'ai confié à Alexandre la conception de mon site pro, et le résultat dépasse toutes mes attentes. Dès le début du projet, Alexandre a fait preuve d'une écoute remarquable pour comprendre précisément mes besoins. Il s'est montré particulièrement investi, rigoureux et d'un professionnalisme exemplaire. Au-delà de sa rigueur technique, il a su apporter une vraie touche de créativité et s'est révélé extrêmement ingénieux pour trouver des solutions adaptées à mes demandes. Je suis plus que satisfait du travail fourni. Je recommande Alexandre les yeux fermés à quiconque cherche un webmaster de confiance, talentueux et force de proposition. Un immense merci pour cette collaboration !"
+  author: "Jérôme Saglio"
+  role: "Fondateur, Gemilio"
 ---
 
 Jérôme Saglio source des gemmes aux quatre coins du monde. Son problème : aucune présence en ligne pour montrer ses pierres. Dans un secteur où l'image est tout.

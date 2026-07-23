@@ -7,6 +7,10 @@ services: ["Design UI/UX", "Développement web"]
 liveUrl: "https://yannmokoko.com/"
 mainImage: "/images/projects/mokoko-main.webp"
 galleryImages: ["/images/projects/mokoko-1.webp", "/images/projects/mokoko-2.webp", "/images/projects/mokoko-3.webp"]
+testimonial:
+  quote: "Landing page pour solorecruiter. L'accompagnement d'Alexandre et le suivis ont été très très bons."
+  author: "Yann Mokoko"
+  role: "Head of Talent externalisé"
 ---
 
 Yann Mokoko, Head of Talent externalisé avec 15 ans d'expérience en recrutement tech (plus de 1000 recrutements réalisés), souhaitait une landing page capable de porter seule tout son discours commercial : positionner son offre face aux cabinets de chasse traditionnels, expliquer sa méthode en détail, et convertir les visiteurs en rendez-vous qualifiés — sans intervention humaine pour répondre aux questions de base.

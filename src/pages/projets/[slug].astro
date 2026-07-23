@@ -251,10 +251,9 @@ const creativeWorkSchema = {
 	.project-content {
 		display: flex;
 		align-items: flex-start;
+		justify-content: space-between;
 		gap: 64px;
-		width: fit-content;
-		max-width: 100%;
-		margin-left: auto;
+		width: 100%;
 	}
 
 	.testimonial {
@@ -266,13 +265,12 @@ const creativeWorkSchema = {
 
 	.testimonial__quote {
 		margin: 0 0 16px;
-		font-family: "Cormorant Garamond", serif;
-		font-style: italic;
-		font-weight: 600;
-		letter-spacing: -0.04em;
-		line-height: 1.3;
-		font-size: 1.25rem;
-		color: #00259e;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
 	}
 
 	.testimonial__attribution {
@@ -300,6 +298,7 @@ const creativeWorkSchema = {
 
 	.project-body {
 		max-width: 700px;
+		margin-left: auto;
 	}
 
 	.project-body :global(h3) {
@@ -362,12 +361,14 @@ const creativeWorkSchema = {
 		.project-content {
 			flex-direction: column;
 			gap: 24px;
-			width: 100%;
-			margin-left: 0;
 		}
 
 		.testimonial {
 			flex-basis: auto;
+		}
+
+		.project-body {
+			margin-left: 0;
 		}
 
 		.pager {
