@@ -111,6 +111,10 @@ const creativeWorkSchema = {
 			<SectionTitle text="Le projet" />
 
 			<div class="project-content">
+				<div class="project-body">
+					<Content />
+				</div>
+
 				{project.testimonial && (
 					<figure class="testimonial">
 						<blockquote class="testimonial__quote">«&nbsp;{project.testimonial.quote}&nbsp;»</blockquote>
@@ -121,10 +125,6 @@ const creativeWorkSchema = {
 						</figcaption>
 					</figure>
 				)}
-
-				<div class="project-body">
-					<Content />
-				</div>
 			</div>
 		</div>
 
@@ -250,15 +250,14 @@ const creativeWorkSchema = {
 
 	.project-content {
 		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-		gap: 64px;
-		width: 100%;
+		flex-direction: column;
+		gap: 24px;
+		max-width: 700px;
+		margin-left: auto;
 	}
 
 	.testimonial {
 		margin: 0;
-		flex: 0 0 280px;
 		padding-left: 24px;
 		border-left: 2px solid #00259e;
 	}
@@ -266,12 +265,11 @@ const creativeWorkSchema = {
 	.testimonial__quote {
 		margin: 0 0 16px;
 		font-family: "Montserrat", sans-serif;
-		font-style: italic;
 		font-weight: 500;
-		font-size: 0.8125rem;
-		line-height: 1.5;
+		font-size: 1rem;
+		line-height: 1.6;
 		letter-spacing: -0.03em;
-		color: #5a6488;
+		color: #333333;
 	}
 
 	.testimonial__attribution {
@@ -295,11 +293,6 @@ const creativeWorkSchema = {
 		font-size: 0.875rem;
 		letter-spacing: -0.03em;
 		color: #5a6488;
-	}
-
-	.project-body {
-		max-width: 700px;
-		margin-left: auto;
 	}
 
 	.project-body :global(h3) {
@@ -360,15 +353,6 @@ const creativeWorkSchema = {
 		}
 
 		.project-content {
-			flex-direction: column;
-			gap: 24px;
-		}
-
-		.testimonial {
-			flex-basis: auto;
-		}
-
-		.project-body {
 			margin-left: 0;
 		}
 
