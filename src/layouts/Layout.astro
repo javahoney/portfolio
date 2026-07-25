@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
+
 interface Props {
 	title: string;
 	description?: string;
@@ -55,6 +57,23 @@ const structuredDataJson =
 			href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Montserrat:ital,wght@0,500;0,600;1,300;1,600&display=swap"
 			rel="stylesheet"
 		/>
+		<ClientRouter />
+		<script>
+			// Pas de transition quand la navigation cible la page déjà affichée
+			// (même pathname). Un class/attribut custom sur <html> ne survivrait
+			// pas : swapRootAttributes() (astro/dist/transitions/swap-functions.js)
+			// efface tous les attributs du <html> au moment du swap, sauf les deux
+			// attributs internes d'Astro (data-astro-transition[-fallback]) qu'il
+			// préserve explicitement — donc pas moyen de passer par une classe/attr
+			// perso pour conditionner le CSS. On utilise à la place l'API native :
+			// event.viewTransition.skipTransition() sur astro:before-swap saute
+			// l'animation sans empêcher le swap du DOM qui suit dans tous les cas.
+			document.addEventListener("astro:before-swap", (event) => {
+				if (event.from.pathname === event.to.pathname) {
+					event.viewTransition.skipTransition();
+				}
+			});
+		</script>
 	</head>
 	<body>
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF6VD348"
@@ -317,6 +336,60 @@ const structuredDataJson =
 
 		.section-title__text {
 			font-size: 2rem;
+		}
+	}
+
+	/* Transition de page : la page sortante glisse seule vers le haut, lente et
+	   sans rebond. La page entrante reste invisible pendant tout ce temps
+	   (elle est empilée par-dessus, donc si elle apparaissait tout de suite
+	   elle masquerait la sortie) puis surgit en fondu rapide juste à la fin. */
+	@keyframes slide-up-out {
+		35% {
+			opacity: 0;
+		}
+		to {
+			transform: translateY(-100%);
+			opacity: 0;
+		}
+	}
+
+	@keyframes fade-in-quick {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	/* Neutralise le morph par défaut du navigateur sur le groupe racine :
+	   les pages n'ayant pas toutes la même hauteur, Chrome anime par défaut
+	   la largeur/hauteur du conteneur avec son propre easing (~0.25s ease),
+	   en parallèle de nos animations sur old/new — ce décalage de timing est
+	   ce qui produisait un effet de rebond résiduel. On aligne sa durée et
+	   son easing sur la séquence complète pour qu'il ne joue plus son propre
+	   mouvement. */
+	::view-transition-group(root) {
+		animation-duration: 0.75s;
+		animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	::view-transition-old(root) {
+		animation: slide-up-out 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+	}
+
+	::view-transition-new(root) {
+		/* fill-mode "both" applique opacity:0 (première image clé) pendant
+		   tout le délai : la page entrante reste donc invisible le temps que
+		   la sortie se joue, et n'apparaît qu'à la fin, rapidement. */
+		animation: fade-in-quick 0.25s ease-out 0.5s both;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		::view-transition-group(*),
+		::view-transition-old(*),
+		::view-transition-new(*) {
+			animation: none !important;
 		}
 	}
 </style>
