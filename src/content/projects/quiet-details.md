@@ -17,4 +17,4 @@ testimonial:
 
 **Ce qui a été livré.** Une intervention ciblée de finalisation et de débogage sur l'existant : correction des dysfonctionnements identifiés, ajustements de mise en page et de responsive, finitions des interactions et du contenu, jusqu'à un site pleinement fonctionnel et prêt à être publié.
 
-**Résultat.** Un site en ligne, fonctionnel et fidèle à l'identité épurée de la marque, livré dans un délai court — et une cliente qui a jugé la collaboration réactive et professionnelle (voir témoignage).
+**Résultat.** Un site en ligne, fonctionnel et fidèle à l'identité épurée de la marque.
