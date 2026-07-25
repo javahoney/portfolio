@@ -1,9 +1,10 @@
 ---
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
-import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
+import Topbar from "../../components/Topbar.astro";
 
 export async function getStaticPaths() {
 	const projectEntries = await getCollection("projects");
@@ -28,6 +29,22 @@ const { entry, prevId, nextId } = Astro.props;
 const project = entry.data;
 const { Content } = await render(entry);
 
+const email = "contact@alexandre-lobo.com";
+const subject = "Démarrer un projet";
+const body = `Bonjour Alexandre,
+
+Je souhaite échanger sur un projet de site web.
+
+Type de projet :
+Délai souhaité :
+Budget approximatif :
+
+Quelques précisions sur mon activité et mon besoin :
+
+
+Merci !`;
+const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
 const galleryIndexes = [0, 1, 2];
 
 const metaDescription =
@@ -40,21 +57,21 @@ const creativeWorkSchema = {
 	"@type": "CreativeWork",
 	name: project.name,
 	description: project.overview,
-	...(project.mainImage && { image: new URL(project.mainImage, Astro.site).toString() }),
+	...(project.mainImage && { image: new URL(project.mainImage.src, Astro.site).toString() }),
 };
 ---
 
 <Layout
 	title={`${project.name} — Alexandre Lobo`}
 	description={metaDescription}
-	image={project.mainImage}
+	image={project.mainImage?.src}
 	structuredData={creativeWorkSchema}
 >
-	<Nav />
+	<Topbar href={mailtoHref} variant="on-light" />
 
 	<main>
 		<div class="project-hero">
-			<a class="navlink back-link" href="/">← Retour</a>
+			<a class="navlink back-link" href="/projets">← Retour</a>
 
 			<h1 class="project-title">{project.name}</h1>
 
@@ -88,7 +105,7 @@ const creativeWorkSchema = {
 		<div class="gallery section">
 			<div class="gallery__main">
 				{project.mainImage ? (
-					<img src={project.mainImage} alt={project.name} />
+					<Image src={project.mainImage} alt={project.name} width={1400} loading="eager" />
 				) : (
 					<div class="gallery__placeholder" aria-hidden="true"></div>
 				)}
@@ -98,7 +115,7 @@ const creativeWorkSchema = {
 				{galleryIndexes.map((i) => (
 					<div class="gallery__item">
 						{project.galleryImages?.[i] ? (
-							<img src={project.galleryImages[i]} alt={`${project.name} — visuel ${i + 1}`} />
+							<Image src={project.galleryImages[i]} alt={`${project.name} — visuel ${i + 1}`} width={700} loading="lazy" />
 						) : (
 							<div class="gallery__placeholder" aria-hidden="true"></div>
 						)}
@@ -143,7 +160,7 @@ const creativeWorkSchema = {
 	.project-hero {
 		max-width: 1400px;
 		margin: 0 auto;
-		padding: 96px 48px 64px;
+		padding: 64px 48px 64px;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -158,9 +175,9 @@ const creativeWorkSchema = {
 
 	.project-title {
 		margin: 0;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
-		letter-spacing: -0.04em;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.05em;
 		line-height: 1.02;
 		color: #00259e;
 		font-size: clamp(3.5rem, 8vw, 4.5rem);
@@ -297,8 +314,8 @@ const creativeWorkSchema = {
 
 	.project-body :global(h3) {
 		margin: 40px 0 16px;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
 		letter-spacing: -0.04em;
 		line-height: 1.15;
 		font-size: 1.5rem;
@@ -332,7 +349,7 @@ const creativeWorkSchema = {
 
 	@media (max-width: 640px) {
 		.project-hero {
-			padding: 64px 12px 40px;
+			padding: 40px 12px 40px;
 		}
 
 		.project-title {

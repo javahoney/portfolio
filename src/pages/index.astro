@@ -1,11 +1,33 @@
 ---
+import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
+import CompactLabel from "../components/CompactLabel.astro";
 import Footer from "../components/Footer.astro";
-import SectionTitle from "../components/SectionTitle.astro";
+import Topbar from "../components/Topbar.astro";
+
+const email = "alexandre@alexandre-lobo.com";
+const subject = "Nouveau projet";
+const body = `Bonjour Alexandre,
+
+Ce que je vends :
+À qui :
+URL de mon site actuel :
+
+Merci !`;
+const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+const homeProjectIds = ["gemilio", "yann-mokoko", "le-paris", "quiet-details"];
+const homeProjects = await Promise.all(
+	homeProjectIds.map(async (id) => {
+		const entry = await getEntry("projects", id);
+		if (!entry) throw new Error(`Project entry not found: ${id}`);
+		return entry;
+	})
+);
 
 const description =
-	"Conception de sites vitrines performants pour indépendants et petites entreprises. Un process clair, du design à la mise en ligne, et une autonomie totale pour piloter votre site une fois livré.";
+	"Conception de sites web et rédaction technique pour les entreprises qui vendent des produits complexes. Chimiste de formation, passé par le laboratoire.";
 
 const personSchema = {
 	"@context": "https://schema.org",
@@ -17,43 +39,87 @@ const personSchema = {
 };
 ---
 
-<Layout title="Alexandre Lobo — Sites vitrines performants, pilotés en autonomie" description={description} structuredData={personSchema}>
-	<Nav />
+<Layout
+	title="Alexandre Lobo — Sites web et rédaction technique"
+	description={description}
+	structuredData={personSchema}
+>
+	<section class="hp-hero">
+		<Topbar href={mailtoHref} />
+		<div class="hp-hero__inner">
+			<div class="hp-hero__heading">
+				<h1 class="hp-hero__title">Des sites clairs pour des entreprises avec des produits complexes.</h1>
+				<p class="hp-hero__subtitle">Chimiste de formation, passé par le laboratoire. Basé à Orléans, je travaille à distance.</p>
+			</div>
+			<a class="btn btn--on-dark" href={mailtoHref} target="_blank" rel="noopener noreferrer">Écrire</a>
+		</div>
+	</section>
 
 	<main>
-		<section class="section" id="approche">
-			<SectionTitle text="Mon approche" />
+		<section class="section hp-doors">
+			<h2 class="sr-only">Sites web et rédaction technique</h2>
+			<div class="hp-door-grid">
+				<a class="hp-door" href="/pme-techniques">
+					<h3 class="hp-door__title">Sites web</h3>
+					<p class="hp-door__text">Conception, refonte, référencement. Contenu rédigé compris.</p>
+					<span class="hp-door__link">Voir la prestation →</span>
+				</a>
+				<a class="hp-door" href="/redaction-technique">
+					<h3 class="hp-door__title">Rédaction technique</h3>
+					<p class="hp-door__text">Fiches produits, brochures, livres blancs. Sans refonte de site.</p>
+					<span class="hp-door__link">Voir la prestation →</span>
+				</a>
+			</div>
+		</section>
 
-			<div class="approach">
-				<div class="approach__row">
-					<p class="approach__text">Je pars de vos objectifs business,<br />et je construis autour.</p>
-					<span class="approach__icon">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00259E" stroke-width="1.5">
-							<rect x="3" y="7" width="18" height="12"></rect>
-							<path d="M8 7V5C8 4 8.5 3 10 3H14C15.5 3 16 4 16 5V7"></path>
-							<line x1="3" y1="12" x2="21" y2="12"></line>
-						</svg>
-					</span>
-				</div>
-				<div class="approach__row">
-					<p class="approach__text">Conception de sites vitrines,<br />du design à la mise en ligne.</p>
-					<span class="approach__icon">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00259E" stroke-width="1.5">
-							<circle cx="12" cy="12" r="9"></circle>
-							<ellipse cx="12" cy="12" rx="4" ry="9"></ellipse>
-							<line x1="3" y1="12" x2="21" y2="12"></line>
-						</svg>
-					</span>
-				</div>
-				<div class="approach__row">
-					<p class="approach__text">Autonomie totale à la livraison,<br />je vous forme à piloter votre site seul.</p>
-					<span class="approach__icon">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00259E" stroke-width="1.5">
-							<path d="M21 3L3 10.5L11 13L21 3Z"></path>
-							<path d="M11 13L14 21L21 3" stroke-linejoin="round"></path>
-						</svg>
-					</span>
-				</div>
+		<section class="section hp-about">
+			<CompactLabel text="Qui je suis" srHeading />
+			<p class="hp-body">
+				Je faisais de la synthèse organique de molécules à intérêt thérapeutique. J'ai travaillé sur plusieurs
+				projets et motifs moléculaires, dont certains ont mené à des publications.
+			</p>
+			<p class="hp-citation">
+				co-auteur — <em>Eur. J. Org. Chem.</em>
+				<a class="badge hp-citation__badge" href="https://doi.org/10.1002/ejoc.202500083" target="_blank" rel="noopener noreferrer">Voir</a>
+			</p>
+			<p class="hp-body">
+				Je vois la synthèse multi-étape comme un jeu de Lego. Optimiser les process et la stratégie d'accès, c'est ce
+				qui me passionne : c'est un jeu de hacker. Hacker au sens anglo-saxon, c'est-à-dire débrouillard — c'est un
+				terme bienveillant.
+			</p>
+			<p class="hp-body">
+				J'ai toujours eu cet esprit de hacker : résoudre un problème complexe de la manière la plus simple et la plus
+				élégante. En ça, j'aime le marketing et le design — ce qui manque le plus dans les milieux scientifiques.
+			</p>
+		</section>
+
+		<section class="section hp-work">
+			<CompactLabel text="Travaux" srHeading />
+			<div class="hp-work-grid">
+				{homeProjects.map((project) => (
+					<a class="hp-work-item" href={`/projets/${project.id}`}>
+						<div class="hp-work-item__media">
+							{project.data.mainImage ? (
+								<Image class="hp-work-item__media-inner" src={project.data.mainImage} alt={project.data.name} width={800} loading="lazy" />
+							) : (
+								<div class="hp-work-item__media-inner" aria-hidden="true"></div>
+							)}
+						</div>
+						<h3 class="hp-work-item__name">{project.data.name}</h3>
+						<p class="hp-work-item__meta">{project.data.category}</p>
+					</a>
+				))}
+			</div>
+			<a class="text-link hp-work__all" href="/projets">Tous les projets →</a>
+		</section>
+
+		<section class="section hp-contact">
+			<CompactLabel text="Contact" />
+			<h2 class="hp-contact__heading">Écrivez-moi.</h2>
+			<p class="hp-body">Réponse sous 24 h ouvrées.</p>
+			<div class="hp-contact__actions">
+				<a class="btn btn--primary" href={mailtoHref} target="_blank" rel="noopener noreferrer">Écrire</a>
+				<a class="text-link" href={mailtoHref} target="_blank" rel="noopener noreferrer">{email}</a>
 			</div>
 		</section>
 	</main>
@@ -62,43 +128,267 @@ const personSchema = {
 </Layout>
 
 <style>
-	.approach {
+	.hp-hero {
+		background: linear-gradient(135deg, #00259e 0%, #001e7e 100%);
+	}
+
+	.hp-hero__inner {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 64px 48px 96px;
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
+		gap: 64px;
 	}
 
-	.approach__row {
+	.hp-hero__heading {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 24px;
-		padding: 32px 0;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
 	}
 
-	.approach__row + .approach__row {
-		border-top: 1px solid #e5e5e5;
-	}
-
-	.approach__text {
+	.hp-hero__title {
 		margin: 0;
+		max-width: 800px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.05em;
+		line-height: 1.04;
+		color: #fff;
+		font-size: clamp(3rem, 6vw, 4.5rem);
+	}
+
+	.hp-hero__subtitle {
+		margin: 0;
+		max-width: 640px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #fff;
+	}
+
+	.hp-body {
+		margin: 0 0 24px;
+		max-width: 680px;
 		font-family: "Montserrat", sans-serif;
 		font-weight: 500;
 		font-size: 1rem;
 		line-height: 1.6;
 		letter-spacing: -0.03em;
 		color: #333333;
-		max-width: 640px;
 	}
 
-	.approach__icon {
-		flex-shrink: 0;
+	.hp-body:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.hp-citation {
+		margin: -8px 0 24px;
+		max-width: 680px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		letter-spacing: -0.03em;
+		color: #5a6488;
+	}
+
+	.hp-citation__badge {
+		margin-left: 8px;
+		vertical-align: middle;
+		text-decoration: none;
+	}
+
+	.hp-doors {
+		padding-top: 64px;
+	}
+
+	.hp-door-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
+	}
+
+	.hp-door {
+		position: relative;
+		overflow: hidden;
+		display: block;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		padding: 40px;
+		text-decoration: none;
+		color: inherit;
+		transition: border-color 0.2s ease-out;
+	}
+
+	.hp-door::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -60%;
+		width: 40%;
+		height: 100%;
+		background: linear-gradient(135deg, rgba(0, 37, 158, 0) 0%, rgba(0, 37, 158, 0.025) 50%, rgba(0, 37, 158, 0) 100%);
+		pointer-events: none;
+	}
+
+	.hp-door:hover {
+		border-color: #00259e;
+	}
+
+	.hp-door:hover::before {
+		animation: hp-door-shine 0.35s ease-out;
+	}
+
+	.hp-door:hover .hp-door__title {
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 4px;
+	}
+
+	@keyframes hp-door-shine {
+		0% {
+			left: -60%;
+		}
+		100% {
+			left: 120%;
+		}
+	}
+
+	.hp-door__title {
+		margin: 0 0 12px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.hp-door__text {
+		margin: 0 0 24px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.hp-door__link {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		font-size: 0.875rem;
+		letter-spacing: -0.03em;
+		color: #00259e;
+	}
+
+	.hp-work-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+	}
+
+	.hp-work-item {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.hp-work-item__media {
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+	}
+
+	.hp-work-item__media-inner {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		object-position: center;
+		background: linear-gradient(135deg, #dde5f0, #c2cee0);
+		transition: transform 0.4s ease-out;
+	}
+
+	.hp-work-item:hover .hp-work-item__media-inner {
+		transform: scale(1.03);
+	}
+
+	.hp-work-item__name {
+		margin: 16px 0 8px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.hp-work-item__meta {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.hp-work__all {
+		display: inline-block;
+		margin-top: 40px;
+	}
+
+	.hp-contact__heading {
+		margin: 0 0 16px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		color: #00259e;
+		font-size: 1.5rem;
+	}
+
+	.hp-contact__actions {
+		margin-top: 24px;
 		display: flex;
+		align-items: center;
+		gap: 24px;
+		flex-wrap: wrap;
 	}
 
 	@media (max-width: 640px) {
-		.approach__row {
-			gap: 16px;
-			padding: 24px 0;
+		.hp-hero__inner {
+			padding: 40px 12px 64px;
+			gap: 24px;
+		}
+
+		.hp-hero__title {
+			font-size: 2.5rem;
+		}
+
+		.hp-doors {
+			padding-top: 40px;
+		}
+
+		.hp-door-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hp-door {
+			padding: 24px;
+		}
+
+		.hp-work-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hp-work-item__media {
+			aspect-ratio: 1 / 1;
 		}
 	}
 </style>

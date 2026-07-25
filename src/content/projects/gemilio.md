@@ -1,12 +1,12 @@
 ---
 name: "Gemilio"
-category: "Conception web"
+category: "Négoce de pierres précieuses"
 order: 1
-overview: "Négoce de pierres précieuses et fines pour les professionnels de la bijouterie et de la joaillerie."
+overview: "Gemmologue et négoce de pierres précieuses et fines pour les professionnels de la bijouterie et de la joaillerie."
 services: ["Conception web", "Branding", "Logo design", "SEO"]
 liveUrl: "https://www.gemilio.fr/"
-mainImage: "/images/projects/gemilio-main.webp"
-galleryImages: ["/images/projects/gemilio-1.webp", "/images/projects/gemilio-2.webp", "/images/projects/gemilio-3.webp"]
+mainImage: "../../assets/projects/gemilio-main.webp"
+galleryImages: ["../../assets/projects/gemilio-1.webp", "../../assets/projects/gemilio-2.webp", "../../assets/projects/gemilio-3.webp"]
 testimonial:
   quote: "J'ai confié à Alexandre la conception de mon site pro, et le résultat dépasse toutes mes attentes. Dès le début du projet, Alexandre a fait preuve d'une écoute remarquable pour comprendre précisément mes besoins. Il s'est montré particulièrement investi, rigoureux et d'un professionnalisme exemplaire. Au-delà de sa rigueur technique, il a su apporter une vraie touche de créativité et s'est révélé extrêmement ingénieux pour trouver des solutions adaptées à mes demandes. Je suis plus que satisfait du travail fourni. Je recommande Alexandre les yeux fermés à quiconque cherche un webmaster de confiance, talentueux et force de proposition. Un immense merci pour cette collaboration !"
   author: "Jérôme Saglio"

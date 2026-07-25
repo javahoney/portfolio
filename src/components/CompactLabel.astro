@@ -1,32 +1,21 @@
 ---
 interface Props {
 	text: string;
+	srHeading?: boolean;
 }
 
-const { text } = Astro.props;
+const { text, srHeading = false } = Astro.props;
 ---
 
 <div class="compact-label">
-	<span class="compact-label__line" aria-hidden="true"></span>
-	<p class="compact-label__text eyebrow">{text}</p>
+	<span class="badge">{text}</span>
 </div>
+{srHeading && <h2 class="sr-only">{text}</h2>}
 
 <style>
 	.compact-label {
 		display: flex;
 		align-items: center;
-		gap: 16px;
 		margin-bottom: 24px;
-	}
-
-	.compact-label__line {
-		width: 18px;
-		height: 2px;
-		background: #00259e;
-		flex-shrink: 0;
-	}
-
-	.compact-label__text {
-		margin: 0;
 	}
 </style>

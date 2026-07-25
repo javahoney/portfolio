@@ -1,0 +1,500 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CompactLabel from "../components/CompactLabel.astro";
+import Footer from "../components/Footer.astro";
+import Topbar from "../components/Topbar.astro";
+
+const email = "contact@alexandre-lobo.com";
+const subject = "Projet de rédaction technique";
+const body = `Bonjour Alexandre,
+
+Je vous contacte au sujet d'un besoin de rédaction technique.
+
+Type de contenu (article, documentation, page produit...) :
+Volume estimé :
+Délai souhaité :
+
+Quelques précisions sur votre activité et votre besoin :
+
+
+Merci !`;
+const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+const description =
+	"Rédaction technique pour l'industrie, les laboratoires et les bureaux d'études : fiches produits, brochures, livres blancs. Sans refonte de site.";
+
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	serviceType: "Rédaction technique",
+	description,
+	provider: {
+		"@type": "Person",
+		name: "Alexandre Lobo",
+		url: "https://alexandre-lobo.com",
+	},
+	areaServed: "France",
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Offres de rédaction technique",
+		itemListElement: [
+			{
+				"@type": "Offer",
+				itemOffered: { "@type": "Service", name: "Rédaction technique à la journée" },
+				priceSpecification: { "@type": "UnitPriceSpecification", price: 250, priceCurrency: "EUR", unitText: "jour" },
+			},
+		],
+	},
+};
+---
+
+<Layout
+	title="Rédaction technique pour PME techniques et scientifiques — Alexandre Lobo"
+	description={description}
+	structuredData={serviceSchema}
+>
+	<section class="rt-hero">
+		<Topbar href={mailtoHref} />
+		<div class="rt-hero__inner">
+			<div class="rt-hero__heading">
+				<h1 class="rt-hero__title">Une fiche technique est un document commercial.</h1>
+				<p class="rt-hero__subtitle">Rédaction pour l'industrie, les laboratoires et les bureaux d'études. Sans refonte de site.</p>
+			</div>
+			<a class="btn btn--on-dark" href={mailtoHref} target="_blank" rel="noopener noreferrer">Demander un devis</a>
+		</div>
+	</section>
+
+	<main>
+		<section class="section rt-problem">
+			<CompactLabel text="Le problème" />
+			<h2 class="rt-h2">Exact ne veut pas dire vendeur.</h2>
+			<p class="rt-body">
+				Rédigé en interne, le document est juste. Écrit par un spécialiste, pour des spécialistes. Rien n'est faux
+				mais <span class="rt-highlight">rien ne donne envie</span>.
+			</p>
+			<p class="rt-body">Confié à un rédacteur généraliste, il devient <span class="rt-highlight">lisible et creux</span>.</p>
+			<p class="rt-body">
+				Or une fiche produit, une brochure, un livre blanc circulent. Ils sont souvent le dernier document lu avant
+				la décision d'achat. Ils doivent être <span class="rt-highlight">exacts et donner envie de travailler avec
+				vous</span>.
+			</p>
+		</section>
+
+		<section class="section rt-before-after">
+			<CompactLabel text="Avant / Après" />
+			<h2 class="rt-h2">Trois phrases relevées sur des sites en ligne.</h2>
+
+			<div class="rt-card-grid">
+				<div class="rt-card">
+					<p class="rt-card__before">« Nous proposons des solutions d'analyse innovantes. »</p>
+					<p class="rt-card__after">HPLC-UV/DAD, GC-MS, ICP-AES. COFRAC. Rapport sous 5 jours ouvrés.</p>
+				</div>
+				<div class="rt-card">
+					<p class="rt-card__before">« Des équipements de dernière génération. »</p>
+					<p class="rt-card__after">Agilent 1260 Infinity II · Thermo ISQ 7000 · Metrohm 883. Certificats d'étalonnage sur demande.</p>
+				</div>
+				<div class="rt-card">
+					<p class="rt-card__before">« Nous vous accompagnons dans tous vos projets. »</p>
+					<p class="rt-card__after">Études de structure béton et charpente métallique. Notes de calcul Eurocode. Plans d'exécution sous 15 jours.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section rt-types">
+			<h2 class="rt-h2">Ce que je rédige</h2>
+
+			<div class="rt-badge-row rt-badge-row--green">
+				<span class="badge">Fiches produits</span>
+				<span class="badge">Fiches techniques</span>
+				<span class="badge">Pages web</span>
+				<span class="badge">Brochures</span>
+				<span class="badge">Livres blancs</span>
+				<span class="badge">Documentation commerciale</span>
+				<span class="badge">Publications LinkedIn</span>
+			</div>
+		</section>
+
+		<section class="section rt-process">
+			<CompactLabel text="Comment ça marche" />
+			<h2 class="rt-h2">Vous envoyez vos documents. Je rédige. Vous corrigez une fois.</h2>
+			<p class="rt-body">
+				Vos fiches techniques et supports existants suffisent. Pas de réunion de cadrage, pas de questionnaire à
+				rallonge.
+			</p>
+		</section>
+
+		<section class="section rt-pricing">
+			<CompactLabel text="Prix" />
+			<h2 class="rt-h2">250 € par jour.</h2>
+			<p class="rt-body">Devis rapide au volume, prix ferme avant de commencer.</p>
+
+			<div class="rt-pricing-grid">
+				<div class="rt-pricing-item">
+					<p class="rt-pricing-item__label">Fiche produit</p>
+					<p class="rt-pricing-item__value">Une demi-journée</p>
+				</div>
+				<div class="rt-pricing-item">
+					<p class="rt-pricing-item__label">Livre blanc</p>
+					<p class="rt-pricing-item__value">Trois à cinq jours</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section rt-about">
+			<div class="rt-about__layout">
+				<div class="rt-about__content">
+					<CompactLabel text="Qui je suis" />
+					<h2 class="rt-h2">Je lis vos documents sans traduction.</h2>
+					<p class="rt-body">
+						Passionné de sciences, j'ai une formation scientifique en chimie, puis en gestion d'entreprise, et je suis
+						passé par le laboratoire avant de me tourner vers le web.
+					</p>
+					<p class="rt-body">
+						Concrètement : je comprends une fiche technique sans traduction, et je n'ai pas besoin qu'on m'explique ce
+						qu'est une accréditation ou un contrôle qualité.
+					</p>
+					<p class="rt-body">Le master en gestion sert à l'autre moitié : un document technique doit aussi vendre.</p>
+				</div>
+				<img class="rt-about__photo" src="/images/photo-profil.png" alt="Alexandre Lobo" />
+			</div>
+		</section>
+
+		<section class="section rt-faq">
+			<CompactLabel text="Questions" srHeading />
+			<div class="rt-faq-list">
+				<div class="rt-faq-item">
+					<h3 class="rt-faq-question">Comment savoir si ce que vous écrivez est exact ?</h3>
+					<p class="rt-faq-answer">Vous relisez. Je ne publie rien sans votre validation technique.</p>
+				</div>
+				<div class="rt-faq-item">
+					<h3 class="rt-faq-question">Vous inventez des chiffres si vous n'en avez pas ?</h3>
+					<p class="rt-faq-answer">Jamais. Ce qui manque reste en surbrillance dans le brouillon.</p>
+				</div>
+				<div class="rt-faq-item">
+					<h3 class="rt-faq-question">Combien de temps ça me prend, à moi ?</h3>
+					<p class="rt-faq-answer">Envoyer les documents, relire une fois.</p>
+				</div>
+				<div class="rt-faq-item">
+					<h3 class="rt-faq-question">Vous faites du SEO ?</h3>
+					<p class="rt-faq-answer">Oui sur les pages web, pas sur les documents imprimés.</p>
+				</div>
+				<div class="rt-faq-item">
+					<h3 class="rt-faq-question">Nos documents sont confidentiels.</h3>
+					<p class="rt-faq-answer">Accord de confidentialité signé avant tout envoi.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section rt-contact">
+			<CompactLabel text="Contact" />
+			<h2 class="rt-contact__heading">Envoyez-moi un document, je vous dis ce que j'en ferais.</h2>
+			<p class="rt-body">Réponse sous 24 h.</p>
+			<div class="rt-contact__actions">
+				<a class="btn btn--primary" href={mailtoHref} target="_blank" rel="noopener noreferrer">Écrire</a>
+				<a class="text-link" href={mailtoHref} target="_blank" rel="noopener noreferrer">{email}</a>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.rt-hero {
+		background: linear-gradient(135deg, #00259e 0%, #001e7e 100%);
+	}
+
+	.rt-hero__inner {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 64px 48px 96px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 64px;
+	}
+
+	.rt-hero__heading {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+	}
+
+	.rt-hero__title {
+		margin: 0;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.05em;
+		line-height: 1.04;
+		color: #fff;
+		font-size: clamp(3.5rem, 8vw, 4.5rem);
+	}
+
+	.rt-hero__subtitle {
+		margin: 0;
+		max-width: 640px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #fff;
+	}
+
+	.rt-problem {
+		padding-top: 40px;
+	}
+
+	.rt-h2 {
+		margin: 0 0 24px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.06;
+		color: #00259e;
+		font-size: clamp(2.25rem, 4vw, 3rem);
+	}
+
+	.rt-body {
+		margin: 0 0 24px;
+		max-width: 680px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.rt-body:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.rt-highlight {
+		font-style: italic;
+		font-weight: 600;
+		font-size: 1.125em;
+		color: #00259e;
+	}
+
+	.rt-card-grid {
+		margin: 40px 0 0;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+	}
+
+	.rt-card {
+		position: relative;
+		overflow: hidden;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		padding: 32px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.rt-card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -60%;
+		width: 40%;
+		height: 100%;
+		background: linear-gradient(135deg, rgba(0, 37, 158, 0) 0%, rgba(0, 37, 158, 0.025) 50%, rgba(0, 37, 158, 0) 100%);
+		pointer-events: none;
+	}
+
+	.rt-card:hover::before {
+		animation: rt-card-shine 0.35s ease-out;
+	}
+
+	@keyframes rt-card-shine {
+		0% {
+			left: -60%;
+		}
+		100% {
+			left: 120%;
+		}
+	}
+
+	.rt-card__before {
+		margin: 0 0 16px;
+		padding-bottom: 16px;
+		border-bottom: 1px solid #e5e5e5;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-style: italic;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		letter-spacing: -0.03em;
+		color: #5a6488;
+	}
+
+	.rt-card__after {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.rt-badge-row {
+		margin-top: 24px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.rt-badge-row--green .badge {
+		background-color: #ecf7e4;
+		color: #00259e;
+	}
+
+	.rt-pricing-grid {
+		margin-top: 40px;
+		max-width: 640px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+	}
+
+	.rt-pricing-item {
+		border: 1px solid #e5e5e5;
+		padding: 32px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.rt-pricing-item__label {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: #00259e;
+	}
+
+	.rt-pricing-item__value {
+		margin: 0;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.rt-faq-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.rt-faq-item {
+		padding: 32px 0;
+	}
+
+	.rt-faq-item + .rt-faq-item {
+		border-top: 1px solid #e5e5e5;
+	}
+
+	.rt-faq-question {
+		margin: 0 0 8px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.rt-faq-answer {
+		margin: 0;
+		max-width: 640px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.rt-about__layout {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+	}
+
+	.rt-about__photo {
+		flex-shrink: 0;
+		width: 112px;
+		height: 112px;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	.rt-about__content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.rt-contact__heading {
+		margin: 0 0 16px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		color: #00259e;
+		font-size: 1.5rem;
+	}
+
+	.rt-contact__actions {
+		margin-top: 24px;
+		display: flex;
+		align-items: center;
+		gap: 24px;
+		flex-wrap: wrap;
+	}
+
+	@media (max-width: 640px) {
+		.rt-hero__inner {
+			padding: 40px 12px 64px;
+			gap: 24px;
+		}
+
+		.rt-hero__title {
+			font-size: 3rem;
+		}
+
+		.rt-card-grid {
+			grid-template-columns: 1fr;
+			margin-top: 24px;
+		}
+
+		.rt-pricing-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.rt-about__layout {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 24px;
+		}
+
+		.rt-about__photo {
+			width: 96px;
+			height: 96px;
+		}
+
+		.rt-faq-item {
+			padding: 24px 0;
+		}
+	}
+</style>

@@ -1,7 +1,10 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import SectionTitle from "../components/SectionTitle.astro";
+import Footer from "../components/Footer.astro";
+import Topbar from "../components/Topbar.astro";
 
 const email = "contact@alexandre-lobo.com";
 const subject = "Démarrer un projet";
@@ -25,15 +28,37 @@ const projects = projectEntries
 	.sort((a, b) => a.order - b.order);
 
 const description =
-	"Conception de sites vitrines performants pour indépendants et petites entreprises. Un process clair, du design à la mise en ligne, et une autonomie totale pour piloter votre site une fois livré.";
+	"Portfolio de sites web conçus par Alexandre Lobo pour des indépendants et petites entreprises : design, développement et référencement.";
+
+const collectionSchema = {
+	"@context": "https://schema.org",
+	"@type": "CollectionPage",
+	name: "Projets — Alexandre Lobo",
+	description,
+	mainEntity: {
+		"@type": "ItemList",
+		itemListElement: projects.map((project, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			url: `https://alexandre-lobo.com/projets/${project.id}`,
+			name: project.name,
+		})),
+	},
+};
 ---
 
-<Layout title="Portfolio — Alexandre Lobo" description={description}>
+<Layout
+	title="Projets — Alexandre Lobo"
+	description={description}
+	image={projects[0]?.mainImage?.src}
+	structuredData={collectionSchema}
+>
+	<Topbar href={mailtoHref} variant="on-light" />
+
 	<main>
 		<section class="hero">
-			<p class="eyebrow">Alexandre Lobo</p>
-			<h1 class="hero__title">Un site performant,<br />que vous pilotez seul</h1>
-			<a class="btn btn--primary btn--cta" href={mailtoHref} target="_blank" rel="noopener noreferrer">Démarrer un projet</a>
+			<h1 class="hero__title">Tous les projets</h1>
+			<a class="btn btn--primary" href={mailtoHref} target="_blank" rel="noopener noreferrer">Démarrer un projet</a>
 		</section>
 
 		<section class="section" id="projets">
@@ -44,7 +69,7 @@ const description =
 					<a class="project" href={`/projets/${project.id}`}>
 						<div class="project__media">
 							{project.mainImage ? (
-								<img class="project__media-inner" src={project.mainImage} alt={project.name} />
+								<Image class="project__media-inner" src={project.mainImage} alt={project.name} width={800} loading="lazy" />
 							) : (
 								<div class="project__media-inner" aria-hidden="true"></div>
 							)}
@@ -56,31 +81,29 @@ const description =
 			</div>
 		</section>
 	</main>
+
+	<Footer />
 </Layout>
 
 <style>
 	.hero {
 		max-width: 1400px;
 		margin: 0 auto;
-		padding: 96px 48px 160px;
+		padding: 64px 48px 160px;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 24px;
+		gap: 64px;
 	}
 
 	.hero__title {
 		margin: 0;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
-		letter-spacing: -0.04em;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.05em;
 		line-height: 1.02;
 		color: #00259e;
 		font-size: clamp(3.5rem, 8vw, 4.5rem);
-	}
-
-	.btn--cta {
-		margin-top: 16px;
 	}
 
 	.projects {
@@ -116,8 +139,8 @@ const description =
 
 	.project__name {
 		margin: 16px 0 8px;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
 		letter-spacing: -0.04em;
 		line-height: 1.15;
 		font-size: 1.5rem;
@@ -136,8 +159,8 @@ const description =
 
 	@media (max-width: 640px) {
 		.hero {
-			padding: 64px 12px 96px;
-			gap: 16px;
+			padding: 40px 12px 96px;
+			gap: 24px;
 		}
 
 		.hero__title {

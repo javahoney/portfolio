@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import CompactLabel from "../components/CompactLabel.astro";
 import Footer from "../components/Footer.astro";
+import Topbar from "../components/Topbar.astro";
 
 const email = "contact@alexandre-lobo.com";
 const subject = "Besoin de renfort - création de site web";
@@ -75,21 +76,23 @@ const serviceSchema = {
 	structuredData={serviceSchema}
 >
 	<header class="mb-header">
+		<Topbar href={mailtoHref} />
 		<div class="mb-header__inner">
-			<p class="eyebrow mb-header__eyebrow">
-				Alexandre Lobo <span class="diamond diamond--white" aria-hidden="true"></span> Offre agence — Marque blanche
-			</p>
-			<h1 class="mb-header__title">Production Webflow &amp; Framer,<br />livrée en votre nom.</h1>
-			<p class="mb-header__subtitle">
-				Votre agence garde le contrôle. Je m'occupe de l'intégration technique, du responsive au SEO de base en white
-				label pour vos projets de site vitrine.
-			</p>
+			<div class="mb-header__heading">
+				<p class="eyebrow mb-header__eyebrow">Offre agence — Marque blanche</p>
+				<h1 class="mb-header__title">Production Webflow &amp; Framer,<br />livrée en votre nom.</h1>
+				<p class="mb-header__subtitle">
+					Votre agence garde le contrôle. Je m'occupe de l'intégration technique, du responsive au SEO de base en white
+					label pour vos projets de site vitrine.
+				</p>
+			</div>
+			<a class="btn btn--on-dark" href={mailtoHref} target="_blank" rel="noopener noreferrer">Démarrer un projet</a>
 		</div>
 	</header>
 
 	<main>
 		<section class="mb-section mb-section--first">
-			<CompactLabel text="Scope inclus" />
+			<CompactLabel text="Scope inclus" srHeading />
 
 			<div class="scope-grid">
 				<div class="scope-col">
@@ -170,7 +173,7 @@ const serviceSchema = {
 		</section>
 
 		<section class="mb-section">
-			<CompactLabel text="Révisions" />
+			<CompactLabel text="Révisions" srHeading />
 
 			<div class="revision-bar">
 				<div class="revision-bar__text">
@@ -182,7 +185,7 @@ const serviceSchema = {
 		</section>
 
 		<section class="mb-section">
-			<CompactLabel text="Pricing" />
+			<CompactLabel text="Pricing" srHeading />
 
 			<div class="pricing-table-wrap">
 				<table class="pricing-table">
@@ -211,7 +214,7 @@ const serviceSchema = {
 		</section>
 
 		<section class="mb-section">
-			<CompactLabel text="Options" />
+			<CompactLabel text="Options" srHeading />
 
 			<div class="options-grid">
 				<div class="option-card">
@@ -257,7 +260,7 @@ const serviceSchema = {
 		</section>
 
 		<section class="mb-section">
-			<CompactLabel text="Délais" />
+			<CompactLabel text="Délais" srHeading />
 
 			<div class="delays-grid">
 				<div class="delay-block">
@@ -277,7 +280,7 @@ const serviceSchema = {
 		</section>
 
 		<section class="mb-section mb-cta">
-			<p class="mb-cta__heading">Un projet client à externaliser ?</p>
+			<h2 class="mb-cta__heading">Un projet client à externaliser ?</h2>
 			<p class="mb-cta__text">
 				Marque blanche, délais tenus, une seule personne à briefer du wireframe au SEO technique.
 			</p>
@@ -292,31 +295,35 @@ const serviceSchema = {
 
 <style>
 	.mb-header {
-		background: #00259e;
+		background: linear-gradient(135deg, #00259e 0%, #001e7e 100%);
 	}
 
 	.mb-header__inner {
 		max-width: 1400px;
 		margin: 0 auto;
-		padding: 96px 48px;
+		padding: 64px 48px 96px;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 24px;
+		gap: 64px;
+	}
+
+	.mb-header__heading {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
 	}
 
 	.mb-header__eyebrow.eyebrow {
-		display: flex;
-		align-items: center;
-		gap: 8px;
 		color: #ecf7e4;
 	}
 
 	.mb-header__title {
 		margin: 0;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
-		letter-spacing: -0.04em;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.05em;
 		line-height: 1.04;
 		color: #fff;
 		font-size: clamp(3.5rem, 8vw, 4.5rem);
@@ -340,7 +347,7 @@ const serviceSchema = {
 	}
 
 	.mb-section--first {
-		padding-top: 96px;
+		padding-top: 64px;
 	}
 
 	.scope-grid {
@@ -441,8 +448,8 @@ const serviceSchema = {
 	.revision-bar__price {
 		margin: 0;
 		flex-shrink: 0;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
 		letter-spacing: -0.04em;
 		line-height: 1.15;
 		font-size: 1.5rem;
@@ -487,8 +494,8 @@ const serviceSchema = {
 
 	.pricing-table__price {
 		text-align: right;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
 		letter-spacing: -0.04em;
 		line-height: 1.15;
 		font-size: 1.5rem;
@@ -518,8 +525,8 @@ const serviceSchema = {
 
 	.option-card__title {
 		margin: 0;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
 		letter-spacing: -0.04em;
 		line-height: 1.15;
 		font-size: 1.5rem;
@@ -584,8 +591,8 @@ const serviceSchema = {
 
 	.delay-block__value {
 		margin: 0;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
 		letter-spacing: -0.04em;
 		line-height: 1.15;
 		font-size: 1.5rem;
@@ -611,8 +618,8 @@ const serviceSchema = {
 
 	.mb-cta__heading {
 		margin: 0;
-		font-family: "Cormorant Garamond", serif;
-		font-weight: 600;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
 		letter-spacing: -0.04em;
 		line-height: 1.15;
 		color: #00259e;
@@ -632,7 +639,8 @@ const serviceSchema = {
 
 	@media (max-width: 640px) {
 		.mb-header__inner {
-			padding: 64px 12px;
+			padding: 40px 12px 64px;
+			gap: 24px;
 		}
 
 		.mb-header__title {
@@ -644,7 +652,7 @@ const serviceSchema = {
 		}
 
 		.mb-section--first {
-			padding-top: 64px;
+			padding-top: 40px;
 		}
 
 		.scope-grid {

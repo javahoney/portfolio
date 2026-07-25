@@ -1,0 +1,745 @@
+---
+import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import CompactLabel from "../components/CompactLabel.astro";
+import Footer from "../components/Footer.astro";
+import Topbar from "../components/Topbar.astro";
+import webIconUrl from "../icons/web-icon.svg?url";
+import atomIconUrl from "../icons/atom-icon.svg?url";
+import concurrenceIconUrl from "../icons/concurrence-icon.svg?url";
+import roiIconUrl from "../icons/roi-icon.svg?url";
+import retardIconUrl from "../icons/retard-icon.svg?url";
+import structureIconUrl from "../icons/structure-icon.svg?url";
+import parcoursIconUrl from "../icons/parcours-icon.svg?url";
+import universIconUrl from "../icons/univers-icon.svg?url";
+
+const email = "alexandre@alexandre-lobo.com";
+const subject = "Nouveau projet";
+const body = `Bonjour Alexandre,
+
+Ce que je vends :
+À qui :
+URL de mon site actuel :
+
+Merci !`;
+const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+const gemilio = await getEntry("projects", "gemilio");
+if (!gemilio) throw new Error("Gemilio project entry not found");
+
+const iconUrls = {
+	webIconUrl: `url("${webIconUrl}")`,
+	atomIconUrl: `url("${atomIconUrl}")`,
+	concurrenceIconUrl: `url("${concurrenceIconUrl}")`,
+	roiIconUrl: `url("${roiIconUrl}")`,
+	retardIconUrl: `url("${retardIconUrl}")`,
+	structureIconUrl: `url("${structureIconUrl}")`,
+	parcoursIconUrl: `url("${parcoursIconUrl}")`,
+	universIconUrl: `url("${universIconUrl}")`,
+};
+
+const description =
+	"Refonte de site, rédaction technique et SEO pour les entreprises qui doivent expliquer leur produit avant de le vendre. Un mois, prix ferme.";
+
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	serviceType: "Web Development",
+	description,
+	provider: {
+		"@type": "Person",
+		name: "Alexandre Lobo",
+		url: "https://alexandre-lobo.com",
+	},
+	areaServed: "France",
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Offres site web pour PME techniques et scientifiques",
+		itemListElement: [
+			{
+				"@type": "Offer",
+				itemOffered: { "@type": "Service", name: "Refonte complète" },
+				priceSpecification: { "@type": "PriceSpecification", price: 3500, priceCurrency: "EUR" },
+			},
+			{
+				"@type": "Offer",
+				itemOffered: { "@type": "Service", name: "Abonnement" },
+				priceSpecification: { "@type": "PriceSpecification", minPrice: 150, maxPrice: 350, priceCurrency: "EUR" },
+			},
+			{
+				"@type": "Offer",
+				itemOffered: { "@type": "Service", name: "Rédaction technique" },
+				priceSpecification: { "@type": "PriceSpecification", price: 250, priceCurrency: "EUR" },
+			},
+		],
+	},
+};
+---
+
+<Layout
+	title="Sites web pour PME techniques et scientifiques — Alexandre Lobo"
+	description={description}
+	structuredData={serviceSchema}
+>
+	<section class="pt-hero">
+		<Topbar href={mailtoHref} />
+		<div class="pt-hero__inner">
+			<h1 class="pt-hero__title">
+				Je gère votre <span class="pt-hero__icon icon-mask icon-mask--on-dark pt-hero__icon--web" aria-hidden="true"></span> site.<br />
+				Entreprises scientifiques <span class="pt-hero__icon icon-mask icon-mask--on-dark pt-hero__icon--atom" aria-hidden="true"></span> et techniques.
+			</h1>
+			<a class="btn btn--on-dark" href={mailtoHref} target="_blank" rel="noopener noreferrer">Décrire mon projet</a>
+		</div>
+	</section>
+
+	<main>
+		<section class="section pt-inaction">
+			<h2 class="pt-h2 pt-inaction__title">Chaque mois sans stratégie web claire, c'est :</h2>
+
+			<div class="pt-card-grid">
+				<div class="pt-card">
+					<div class="pt-card__icon icon-mask icon-mask--on-light pt-card__icon--concurrence" aria-hidden="true"></div>
+					<h3 class="pt-card__label">Concurrence</h3>
+					<p class="pt-card__text">Des clients qui partent chez vos concurrents.</p>
+				</div>
+				<div class="pt-card">
+					<div class="pt-card__icon icon-mask icon-mask--on-light pt-card__icon--roi" aria-hidden="true"></div>
+					<h3 class="pt-card__label">ROI</h3>
+					<p class="pt-card__text">De l'argent investi, sans véritable ROI.</p>
+				</div>
+				<div class="pt-card">
+					<div class="pt-card__icon icon-mask icon-mask--on-light pt-card__icon--retard" aria-hidden="true"></div>
+					<h3 class="pt-card__label">Retard</h3>
+					<p class="pt-card__text">Des années de retard cumulé sur votre marché.</p>
+				</div>
+			</div>
+
+			<div class="pt-inaction__closing">
+				<p>Votre site web en 2026 ne pardonne plus l'attentisme.</p>
+				<p>Les concurrents les plus lucides ont déjà migré.</p>
+			</div>
+		</section>
+
+		<section class="section pt-work">
+			<CompactLabel text="Solution" />
+			<h2 class="pt-h2">Simplifier, surtout.</h2>
+			<p class="pt-body">
+				Un acheteur compare trois prestataires. Il passe moins d'une minute sur chaque site, et cherche trois
+				choses : est-ce que vous faites ce dont j'ai besoin, est-ce que vous êtes sérieux, comment je vous joins.
+			</p>
+
+			<div class="pt-card-grid">
+				<div class="pt-card">
+					<div class="pt-card__icon icon-mask icon-mask--on-light pt-card__icon--structure" aria-hidden="true"></div>
+					<h3 class="pt-card__label">Structure</h3>
+					<p class="pt-card__text">Douze pages qui se recoupent deviennent cinq, une par question que se pose votre client.</p>
+				</div>
+				<div class="pt-card">
+					<div class="pt-card__icon icon-mask icon-mask--on-light pt-card__icon--parcours" aria-hidden="true"></div>
+					<h3 class="pt-card__label">Parcours</h3>
+					<p class="pt-card__text">Une seule action possible, au lieu de quatre boutons qui se concurrencent.</p>
+				</div>
+				<div class="pt-card">
+					<div class="pt-card__icon icon-mask icon-mask--on-light pt-card__icon--univers" aria-hidden="true"></div>
+					<h3 class="pt-card__label">Univers</h3>
+					<p class="pt-card__text">Le vocabulaire, le design et le ton racontent la même histoire.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section pt-offers">
+			<CompactLabel text="Offres" />
+			<h2 class="pt-h2">Trois façons de travailler.</h2>
+
+			<div class="pt-offer-list">
+				<div class="pt-offer">
+					<div class="pt-offer__text">
+						<h3 class="pt-offer__title">Refonte complète</h3>
+						<p class="pt-offer__desc">Design, développement, contenu rédigé. Un mois.</p>
+					</div>
+					<p class="pt-offer__price">3 500 € forfait</p>
+				</div>
+				<div class="pt-offer">
+					<div class="pt-offer__text">
+						<h3 class="pt-offer__title">Abonnement</h3>
+						<p class="pt-offer__desc">Maintenance, SEO, pages techniques et contenu mensuel.</p>
+					</div>
+					<p class="pt-offer__price">150–350 € / mois</p>
+				</div>
+				<a class="pt-offer pt-offer--link" href="/redaction-technique">
+					<div class="pt-offer__text">
+						<h3 class="pt-offer__title">Rédaction technique <span class="pt-offer__arrow" aria-hidden="true">→</span></h3>
+						<p class="pt-offer__desc">Fiches, brochures, livres blancs. Sans refonte.</p>
+					</div>
+					<p class="pt-offer__price">250 € / jour</p>
+				</a>
+			</div>
+		</section>
+
+		<section class="section pt-travaux">
+			<CompactLabel text="Travaux" srHeading />
+			<div class="pt-travaux__grid">
+				{gemilio.data.galleryImages?.map((src, i) => (
+					<div class="pt-travaux__item">
+						<Image src={src} alt={`${gemilio.data.name} — visuel ${i + 1}`} width={600} loading="lazy" />
+					</div>
+				))}
+			</div>
+			<div class="pt-travaux__meta">
+				<div class="pt-travaux__info">
+					<h3 class="pt-travaux__name">{gemilio.data.name}</h3>
+					<p class="pt-travaux__overview">{gemilio.data.overview}</p>
+					{gemilio.data.liveUrl && (
+						<a class="text-link" href={gemilio.data.liveUrl} target="_blank" rel="noopener noreferrer">Voir en live →</a>
+					)}
+				</div>
+				{gemilio.data.testimonial && (
+					<figure class="pt-testimonial pt-travaux__testimonial">
+						<blockquote class="pt-testimonial__quote">«&nbsp;{gemilio.data.testimonial.quote}&nbsp;»</blockquote>
+						<figcaption class="pt-testimonial__attribution">
+							<span class="pt-testimonial__author">{gemilio.data.testimonial.author}</span>
+							{gemilio.data.testimonial.role && <span class="diamond" aria-hidden="true"></span>}
+							{gemilio.data.testimonial.role && <span class="pt-testimonial__role">{gemilio.data.testimonial.role}</span>}
+						</figcaption>
+					</figure>
+				)}
+			</div>
+		</section>
+
+		<section class="section pt-about">
+			<div class="pt-about__layout">
+				<div class="pt-about__content">
+					<CompactLabel text="Qui je suis" />
+					<h2 class="pt-h2">Je lis vos documents sans traduction.</h2>
+					<p class="pt-body">
+						Passionné de sciences, j'ai une formation scientifique en chimie, puis en gestion d'entreprise, et je suis
+						passé par le laboratoire avant de me tourner vers le web.
+					</p>
+					<p class="pt-body">
+						Concrètement : je comprends une fiche technique sans traduction, et je n'ai pas besoin qu'on m'explique ce
+						qu'est une accréditation ou un contrôle qualité.
+					</p>
+				</div>
+				<img class="pt-about__photo" src="/images/photo-profil.png" alt="Alexandre Lobo" />
+			</div>
+		</section>
+
+		<section class="section pt-faq">
+			<CompactLabel text="Questions" srHeading />
+			<div class="pt-faq-list">
+				<div class="pt-faq-item">
+					<h3 class="pt-faq-question">De quoi avez-vous besoin pour commencer ?</h3>
+					<p class="pt-faq-answer">Pour commencer : ce que vous vendez, à qui, l'URL de votre site. Par la suite tout le contenu que vous avez à disposition accompagné de vos instructions, je pars de ce que vous avez, de vos instructions et je fais le tri.</p>
+				</div>
+				<div class="pt-faq-item">
+					<h3 class="pt-faq-question">Pourquoi si peu de réunions ?</h3>
+					<p class="pt-faq-answer">Un brief écrit est plus précis, reste consultable, et il vous prend moins de temps à vous comme à moi.</p>
+				</div>
+				<div class="pt-faq-item">
+					<h3 class="pt-faq-question">Je pourrai modifier mon site seul ?</h3>
+					<p class="pt-faq-answer">Oui, sans surcoût. La formation et la prise en main est incluse. Je réalise une série de vidéos sur votre propre site.</p>
+				</div>
+				<div class="pt-faq-item">
+					<h3 class="pt-faq-question">Je suis propriétaire de quoi ?</h3>
+					<p class="pt-faq-answer">Tout : domaine, comptes, code, contenu. Vous partez quand vous voulez.</p>
+				</div>
+				<div class="pt-faq-item">
+					<h3 class="pt-faq-question">L'abonnement est-il obligatoire ?</h3>
+					<p class="pt-faq-answer">Non, jamais. Le site fonctionne sans.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section pt-contact">
+			<CompactLabel text="Contact" />
+			<h2 class="pt-contact__heading">Trois phrases suffisent :</h2>
+			<p class="pt-body">Ce que vous vendez, à qui, l'URL de votre site. Réponse sous 24 h.</p>
+			<div class="pt-contact__actions">
+				<a class="btn btn--primary" href={mailtoHref} target="_blank" rel="noopener noreferrer">Écrire</a>
+				<a class="text-link" href={mailtoHref} target="_blank" rel="noopener noreferrer">{email}</a>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style define:vars={iconUrls}>
+	.pt-hero {
+		background: linear-gradient(135deg, #00259e 0%, #001e7e 100%);
+	}
+
+	.pt-hero__inner {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 64px 48px 96px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 64px;
+	}
+
+	.pt-hero__title {
+		margin: 0;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.05em;
+		line-height: 1.15;
+		color: #fff;
+		font-size: clamp(3.5rem, 8vw, 4.5rem);
+	}
+
+	.pt-hero__icon {
+		display: inline-block;
+		width: 0.72em;
+		height: 0.72em;
+		vertical-align: -0.06em;
+	}
+
+	.pt-hero__icon--web {
+		-webkit-mask-image: var(--webIconUrl);
+		mask-image: var(--webIconUrl);
+	}
+
+	.pt-hero__icon--atom {
+		-webkit-mask-image: var(--atomIconUrl);
+		mask-image: var(--atomIconUrl);
+		transform: rotate(4deg);
+	}
+
+	.pt-h2 {
+		margin: 0 0 24px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.06;
+		color: #00259e;
+		font-size: clamp(2.25rem, 4vw, 3rem);
+	}
+
+	.pt-body {
+		margin: 0 0 24px;
+		max-width: 680px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.pt-body:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.pt-card-grid {
+		margin: 40px 0 0;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+	}
+
+	.pt-card {
+		position: relative;
+		overflow: hidden;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		padding: 32px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.pt-card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -60%;
+		width: 40%;
+		height: 100%;
+		background: linear-gradient(135deg, rgba(0, 37, 158, 0) 0%, rgba(0, 37, 158, 0.025) 50%, rgba(0, 37, 158, 0) 100%);
+		pointer-events: none;
+	}
+
+	.pt-card:hover::before {
+		animation: card-shine 0.35s ease-out;
+	}
+
+	@keyframes card-shine {
+		0% {
+			left: -60%;
+		}
+		100% {
+			left: 120%;
+		}
+	}
+
+	.pt-card__icon {
+		width: 48px;
+		height: 48px;
+		margin-bottom: 8px;
+	}
+
+	.pt-card__icon--concurrence {
+		-webkit-mask-image: var(--concurrenceIconUrl);
+		mask-image: var(--concurrenceIconUrl);
+	}
+
+	.pt-card__icon--roi {
+		-webkit-mask-image: var(--roiIconUrl);
+		mask-image: var(--roiIconUrl);
+	}
+
+	.pt-card__icon--retard {
+		-webkit-mask-image: var(--retardIconUrl);
+		mask-image: var(--retardIconUrl);
+	}
+
+	.pt-card__icon--structure {
+		-webkit-mask-image: var(--structureIconUrl);
+		mask-image: var(--structureIconUrl);
+	}
+
+	.pt-card__icon--parcours {
+		-webkit-mask-image: var(--parcoursIconUrl);
+		mask-image: var(--parcoursIconUrl);
+	}
+
+	.pt-card__icon--univers {
+		-webkit-mask-image: var(--universIconUrl);
+		mask-image: var(--universIconUrl);
+	}
+
+	.pt-card__label {
+		margin: 0;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		color: #00259e;
+		font-size: 1.25rem;
+	}
+
+	.pt-card__text {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.pt-inaction__title {
+		margin-top: 40px;
+	}
+
+	.pt-inaction__closing {
+		margin-top: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.pt-inaction__closing p {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		letter-spacing: -0.03em;
+		line-height: 1.6;
+		color: #333333;
+		font-size: 1rem;
+	}
+
+	.pt-offers {
+		padding-top: 0;
+	}
+
+	.pt-offer-list {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.pt-offer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		padding: 32px;
+		text-decoration: none;
+		color: inherit;
+		transition: border-color 0.2s ease-out;
+	}
+
+	a.pt-offer--link:hover {
+		border-color: #00259e;
+	}
+
+	a.pt-offer--link:hover .pt-offer__title {
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 4px;
+	}
+
+	.pt-offer__title {
+		margin: 0 0 8px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.pt-offer__arrow {
+		font-family: "Montserrat", sans-serif;
+		font-size: 0.75em;
+	}
+
+	.pt-offer__desc {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.pt-offer__price {
+		margin: 0;
+		flex-shrink: 0;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.pt-travaux__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+	}
+
+	.pt-travaux__item {
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+	}
+
+	.pt-travaux__item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		transition: transform 0.4s ease-out;
+	}
+
+	.pt-travaux__item:hover img {
+		transform: scale(1.03);
+	}
+
+	.pt-travaux__meta {
+		margin-top: 24px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: start;
+		gap: 160px;
+	}
+
+	.pt-travaux__info {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.pt-travaux__testimonial {
+		margin-top: 0;
+		max-width: none;
+	}
+
+	.pt-travaux__name {
+		margin: 0;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.pt-travaux__overview {
+		margin: 0;
+		max-width: 640px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.pt-testimonial {
+		margin: 8px 0 0;
+		max-width: 640px;
+		padding-left: 24px;
+		border-left: 2px solid #00259e;
+	}
+
+	.pt-testimonial__quote {
+		margin: 0 0 16px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.pt-testimonial__attribution {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		flex-wrap: wrap;
+	}
+
+	.pt-testimonial__author {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		font-size: 0.875rem;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.pt-testimonial__role {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		letter-spacing: -0.03em;
+		color: #5a6488;
+	}
+
+	.pt-about__layout {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+	}
+
+	.pt-about__photo {
+		flex-shrink: 0;
+		width: 112px;
+		height: 112px;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	.pt-about__content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.pt-faq-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.pt-faq-item {
+		padding: 32px 0;
+	}
+
+	.pt-faq-item + .pt-faq-item {
+		border-top: 1px solid #e5e5e5;
+	}
+
+	.pt-faq-question {
+		margin: 0 0 8px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		font-size: 1.5rem;
+		color: #00259e;
+	}
+
+	.pt-faq-answer {
+		margin: 0;
+		max-width: 640px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.pt-contact__heading {
+		margin: 0 0 16px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.15;
+		color: #00259e;
+		font-size: 1.5rem;
+	}
+
+	.pt-contact__actions {
+		margin-top: 24px;
+		display: flex;
+		align-items: center;
+		gap: 24px;
+		flex-wrap: wrap;
+	}
+
+	@media (max-width: 640px) {
+		.pt-hero__inner {
+			padding: 40px 12px 64px;
+		}
+
+		.pt-hero__title {
+			font-size: 3rem;
+		}
+
+		.pt-card-grid {
+			grid-template-columns: 1fr;
+			margin-top: 24px;
+		}
+
+		.pt-offer {
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 24px;
+		}
+
+		.pt-travaux__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.pt-travaux__meta {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+
+		.pt-about__layout {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 24px;
+		}
+
+		.pt-about__photo {
+			width: 96px;
+			height: 96px;
+		}
+
+		.pt-faq-item {
+			padding: 24px 0;
+		}
+	}
+</style>

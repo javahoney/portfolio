@@ -5,8 +5,8 @@ order: 5
 overview: "Head of Talent externalisé accompagnant les startups en phase d'amorçage et de croissance (Seed à Série B) dans la structuration et l'exécution de leurs recrutements stratégiques."
 services: ["Design UI/UX", "Développement web"]
 liveUrl: "https://yannmokoko.com/"
-mainImage: "/images/projects/mokoko-main.webp"
-galleryImages: ["/images/projects/mokoko-1.webp", "/images/projects/mokoko-2.webp", "/images/projects/mokoko-3.webp"]
+mainImage: "../../assets/projects/mokoko-main.webp"
+galleryImages: ["../../assets/projects/mokoko-1.webp", "../../assets/projects/mokoko-2.webp", "../../assets/projects/mokoko-3.webp"]
 testimonial:
   quote: "Landing page pour solorecruiter. L'accompagnement d'Alexandre et le suivis ont été très très bons."
   author: "Yann Mokoko"

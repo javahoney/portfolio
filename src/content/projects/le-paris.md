@@ -5,8 +5,8 @@ order: 4
 overview: "Bar-restaurant familial au cœur d'Orléans, reconnu pour son ambiance conviviale et ses soirées karaoké, proposant également des prestations traiteur pour les particuliers et professionnels de la région."
 services: ["Identité visuelle", "Design UI/UX", "Développement web", "SEO local"]
 liveUrl: "https://leparis-orleans.fr"
-mainImage: "/images/projects/leparis-main.webp"
-galleryImages: ["/images/projects/leparis-1.webp", "/images/projects/leparis-2.webp", "/images/projects/leparis-3.webp"]
+mainImage: "../../assets/projects/leparis-main.webp"
+galleryImages: ["../../assets/projects/leparis-1.webp", "../../assets/projects/leparis-2.webp", "../../assets/projects/leparis-3.webp"]
 ---
 
 Le Pari's est un bar-restaurant convivial, connu dans son quartier pour ses soirées karaoké et son ambiance familiale — mais entièrement absent du web. Impossible pour un client de consulter la carte, connaître les horaires ou découvrir l'offre traiteur sans se déplacer ou appeler. Les prestations traiteur, pourtant un vrai levier de développement, restaient totalement invisibles.

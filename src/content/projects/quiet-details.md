@@ -5,8 +5,8 @@ order: 7
 overview: "Cabinet de conseil en expérience client fondé par Alexia Ravel, l'art de recevoir pour les acteurs de l'hôtellerie et de la restauration haut de gamme."
 services: ["Finalisation Framer", "Débogage & optimisation technique"]
 liveUrl: "https://quiet-details.com/"
-mainImage: "/images/projects/quiet-details-main.webp"
-galleryImages: ["/images/projects/quiet-details-1.webp", "/images/projects/quiet-details-2.webp", "/images/projects/quiet-details-3.webp"]
+mainImage: "../../assets/projects/quiet-details-main.webp"
+galleryImages: ["../../assets/projects/quiet-details-1.webp", "../../assets/projects/quiet-details-2.webp", "../../assets/projects/quiet-details-3.webp"]
 testimonial:
   quote: "Alexandre a été très réactif et d'un grand professionnalisme ! Une aide précieuse dans la finalisation de mon site sur Framer. Je ne manquerai pas de refaire appel à ses services."
   author: "Alexia Ravel"

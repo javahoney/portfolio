@@ -1,0 +1,97 @@
+---
+interface NavLink {
+	label: string;
+	href: string;
+}
+
+interface Props {
+	href: string;
+	label?: string;
+	variant?: "on-dark" | "on-light";
+	links?: NavLink[];
+}
+
+const DEFAULT_LINKS: NavLink[] = [
+	{ label: "Sites web", href: "/pme-techniques" },
+	{ label: "Rédaction technique", href: "/redaction-technique" },
+	{ label: "Projets", href: "/projets" },
+];
+
+const { href, label = "Écrire", variant = "on-dark", links = DEFAULT_LINKS } = Astro.props;
+const isOnLight = variant === "on-light";
+const linkClass = isOnLight ? "navlink" : "navlink--on-dark";
+---
+
+<div class={`topbar ${isOnLight ? "topbar--on-light" : ""}`}>
+	<a class="topbar__name" href="/"><span class="small-caps-first">A</span><span class="small-caps-rest">lexandre</span> <span class="small-caps-first">L</span><span class="small-caps-rest">obo</span></a>
+	<div class="topbar__actions">
+		{links && links.length > 0 && (
+			<div class="topbar__navlinks">
+				{links.map((link) => (
+					<a class={linkClass} href={link.href}>{link.label}</a>
+				))}
+			</div>
+		)}
+		<a class={linkClass} href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+	</div>
+</div>
+
+<style>
+	.topbar {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 24px 48px 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		flex-wrap: wrap;
+	}
+
+	.topbar__name {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: #fff;
+		font-size: 1rem;
+		text-decoration: none;
+		transition: opacity 0.2s ease-out;
+	}
+
+	.topbar__name:hover {
+		opacity: 0.8;
+	}
+
+	.topbar--on-light .topbar__name {
+		color: #00259e;
+	}
+
+	.topbar__name .small-caps-rest {
+		text-transform: uppercase;
+		font-size: 0.78em;
+	}
+
+	.topbar__actions {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		flex-wrap: wrap;
+	}
+
+	.topbar__navlinks {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	@media (max-width: 640px) {
+		.topbar {
+			padding: 16px 12px 0;
+		}
+
+		.topbar__navlinks {
+			display: none;
+		}
+	}
+</style>

@@ -1,12 +1,12 @@
 ---
 name: "Bientôt l'aurore"
-category: "Conception web"
+category: "Accompagnement deuil et transitions de vie"
 order: 3
 overview: "Accompagnement individuel et collectif spécialisé dans le deuil et les transitions de vie majeures."
 services: ["Conception web", "Branding"]
 liveUrl: "https://bientot-laurore.fr/"
-mainImage: "/images/projects/bientot-laurore-main.webp"
-galleryImages: ["/images/projects/bientot-laurore-1.webp", "/images/projects/bientot-laurore-2.webp", "/images/projects/bientot-laurore-3.webp"]
+mainImage: "../../assets/projects/bientot-laurore-main.webp"
+galleryImages: ["../../assets/projects/bientot-laurore-1.webp", "../../assets/projects/bientot-laurore-2.webp", "../../assets/projects/bientot-laurore-3.webp"]
 testimonial:
   quote: "Alexandre a été extrêmement à l'écoute et pédagogue. Il m'a vraiment accompagné dans ce projet, je le recommande chaleureusement."
   author: "Géraldine"
