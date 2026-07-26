@@ -6,7 +6,7 @@ import CompactLabel from "../components/CompactLabel.astro";
 import Footer from "../components/Footer.astro";
 import Topbar from "../components/Topbar.astro";
 
-const email = "alexandre@alexandre-lobo.com";
+const email = "contact@alexandre-lobo.com";
 const subject = "Nouveau projet";
 const body = `Bonjour Alexandre,
 
@@ -73,20 +73,25 @@ const personSchema = {
 		</section>
 
 		<section class="section hp-about">
-			<CompactLabel text="Qui je suis" srHeading />
-			<p class="hp-body">
-				Je faisais de la synthèse organique de molécules à intérêt thérapeutique. J'ai travaillé sur plusieurs
-				projets et motifs moléculaires, dont certains ont mené à des publications.
-			</p>
-			<p class="hp-citation">
-				co-auteur — <em>Eur. J. Org. Chem.</em>
-				<a class="badge hp-citation__badge" href="https://doi.org/10.1002/ejoc.202500083" target="_blank" rel="noopener noreferrer">Voir</a>
-			</p>
-			<p class="hp-body">
-				Je vois la synthèse multi-étape comme un jeu de Lego. Optimiser les process et les stratégies d'accès.
-				J'aime résoudre un problème complexe de la manière la plus simple et élégante. En ça, j'aime le marketing
-				et le design : ce qui manque le plus dans les milieux scientifiques.
-			</p>
+			<div class="hp-about__layout">
+				<div class="hp-about__content">
+					<CompactLabel text="Qui je suis" srHeading />
+					<p class="hp-body">
+						Je faisais de la synthèse organique de molécules à intérêt thérapeutique. J'ai travaillé sur plusieurs
+						projets et motifs moléculaires, dont certains ont mené à des publications.
+					</p>
+					<p class="hp-citation">
+						co-auteur — <em>Eur. J. Org. Chem.</em>
+						<a class="badge hp-citation__badge" href="https://doi.org/10.1002/ejoc.202500083" target="_blank" rel="noopener noreferrer">Voir</a>
+					</p>
+					<p class="hp-body">
+						Je vois la synthèse multi-étape comme un jeu de Lego. Optimiser les process et les stratégies d'accès.
+						J'aime résoudre un problème complexe de la manière la plus simple et élégante. En ça, j'aime le marketing
+						et le design : ce qui manque le plus dans les milieux scientifiques.
+					</p>
+				</div>
+				<img class="hp-about__photo" src="/images/photo-profil.png" alt="Alexandre Lobo" />
+			</div>
 		</section>
 
 		<section class="section hp-work">
@@ -202,6 +207,27 @@ const personSchema = {
 
 	.hp-citation__badge::before {
 		content: none;
+	}
+
+	.hp-about__layout {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+	}
+
+	.hp-about__photo {
+		flex-shrink: 0;
+		width: 112px;
+		height: 112px;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	.hp-about__content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 	}
 
 	.hp-doors {
@@ -374,6 +400,17 @@ const personSchema = {
 
 		.hp-doors {
 			padding-top: 40px;
+		}
+
+		.hp-about__layout {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 24px;
+		}
+
+		.hp-about__photo {
+			width: 96px;
+			height: 96px;
 		}
 
 		.hp-door-grid {

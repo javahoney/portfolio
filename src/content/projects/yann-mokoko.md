@@ -2,7 +2,7 @@
 name: "Yann Mokoko"
 category: "Recruteur indépendant"
 order: 5
-overview: "Head of Talent externalisé accompagnant les startups en phase d'amorçage et de croissance (Seed à Série B) dans la structuration et l'exécution de leurs recrutements stratégiques."
+overview: "Head of Talent externalisé accompagnant les startups en phase de croissance (Seed à Série B) dans leurs recrutements stratégiques."
 services: ["Design UI/UX", "Développement web"]
 liveUrl: "https://yannmokoko.com/"
 mainImage: "../../assets/projects/mokoko-main.webp"
@@ -13,7 +13,7 @@ testimonial:
   role: "Head of Talent externalisé"
 ---
 
-Yann Mokoko, Head of Talent externalisé avec 15 ans d'expérience en recrutement tech (plus de 1000 recrutements réalisés), souhaitait une landing page capable de porter seule tout son discours commercial : positionner son offre face aux cabinets de chasse traditionnels, expliquer sa méthode en détail, et convertir les visiteurs en rendez-vous qualifiés — sans intervention humaine pour répondre aux questions de base.
+Yann Mokoko, Head of Talent externalisé avec 15 ans d'expérience en recrutement tech, plus de 1000 recrutements réalisés et 28 000 abonnés sur Linkedin, souhaitait une landing page capable de porter seule tout son discours commercial : positionner son offre face aux cabinets de chasse traditionnels, expliquer sa méthode en détail, et convertir les visiteurs en rendez-vous qualifiés sans avoir à intervenir pour répondre aux questions de base.
 
 ### Ce que j'ai livré
 
