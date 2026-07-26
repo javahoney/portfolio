@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import CompactLabel from "../components/CompactLabel.astro";
 import Footer from "../components/Footer.astro";
 import Topbar from "../components/Topbar.astro";
+import docIconUrl from "../icons/doc-icon.svg?url";
 
 const email = "contact@alexandre-lobo.com";
 const subject = "Projet de rédaction technique";
@@ -19,6 +20,10 @@ Quelques précisions sur votre activité et votre besoin :
 
 Merci !`;
 const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+const iconUrls = {
+	docIconUrl: `url("${docIconUrl}")`,
+};
 
 const description =
 	"Rédaction technique pour l'industrie, les laboratoires et les bureaux d'études : fiches produits, brochures, livres blancs. Sans refonte de site.";
@@ -57,7 +62,10 @@ const serviceSchema = {
 		<Topbar href={mailtoHref} />
 		<div class="rt-hero__inner">
 			<div class="rt-hero__heading">
-				<h1 class="rt-hero__title">Une fiche technique est un document commercial.</h1>
+				<h1 class="rt-hero__title">
+					Une fiche technique <span class="rt-hero__icon icon-mask icon-mask--on-dark rt-hero__icon--doc" aria-hidden="true"></span><br />
+					est un document commercial.
+				</h1>
 				<p class="rt-hero__subtitle">Rédaction pour l'industrie, les laboratoires et les bureaux d'études. Sans refonte de site.</p>
 			</div>
 			<a class="btn btn--on-dark" href={mailtoHref} target="_blank" rel="noopener noreferrer">Demander un devis</a>
@@ -199,7 +207,7 @@ const serviceSchema = {
 	<Footer />
 </Layout>
 
-<style>
+<style define:vars={iconUrls}>
 	.rt-hero {
 		background: linear-gradient(135deg, #00259e 0%, #001e7e 100%);
 	}
@@ -229,6 +237,20 @@ const serviceSchema = {
 		line-height: 1.04;
 		color: #fff;
 		font-size: clamp(3.5rem, 8vw, 4.5rem);
+	}
+
+	.rt-hero__icon {
+		display: inline-block;
+		width: 0.72em;
+		height: 0.72em;
+		margin: 0 0.06em;
+		vertical-align: -0.06em;
+	}
+
+	.rt-hero__icon--doc {
+		-webkit-mask-image: var(--docIconUrl);
+		mask-image: var(--docIconUrl);
+		transform: rotate(4deg);
 	}
 
 	.rt-hero__subtitle {
