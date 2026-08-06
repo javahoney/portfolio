@@ -23,6 +23,17 @@ URL de mon site actuel :
 Merci !`;
 const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
+const previewBody = `Bonjour Alexandre,
+
+Ce que je vends :
+À qui :
+URL de mon site actuel :
+
+Je veux voir à quoi mon site pourrait ressembler.
+
+Merci d'avance`;
+const previewMailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(previewBody)}`;
+
 const gemilio = await getEntry("projects", "gemilio");
 if (!gemilio) throw new Error("Gemilio project entry not found");
 
@@ -99,7 +110,7 @@ const serviceSchema = {
 				<p class="pt-hero__subtitle">Parce que votre site mérite d'être aussi fort que votre vision. Je vous accompagne avec un process clair pour des résultats concrets.</p>
 
 				<div class="pt-hero__cta">
-					<a class="btn btn--on-dark" href={mailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
+					<a class="btn btn--on-dark" href={previewMailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
 					<p class="pt-hero__ctanote">Petite maquette gratuite sous 48h</p>
 				</div>
 			</div>
@@ -174,7 +185,7 @@ const serviceSchema = {
 				</div>
 			</div>
 
-			<a class="btn btn--primary pt-section-cta" href={mailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
+			<a class="btn btn--primary pt-section-cta" href={previewMailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
 		</section>
 
 		<section class="section pt-travaux">
@@ -259,7 +270,7 @@ const serviceSchema = {
 				<p>Je vous envoie une direction pour votre page d'accueil, sous 48 h.</p>
 				<p>Si ça vous parle, on parle stratégie, on parle chiffres. Sinon vous gardez l'aperçu.</p>
 			</div>
-			<a class="btn btn--primary pt-section-cta" href={mailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
+			<a class="btn btn--primary pt-section-cta" href={previewMailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
 		</section>
 	</main>
 
@@ -790,10 +801,10 @@ const serviceSchema = {
 
 	.pt-about__icon {
 		display: inline-block;
-		width: 0.72em;
-		height: 0.72em;
-		margin: 0 0.15em 0 0;
-		vertical-align: -0.06em;
+		width: 48px;
+		height: 48px;
+		margin: 0 8px 0 0;
+		vertical-align: middle;
 	}
 
 	.pt-about__icon--molecule {
