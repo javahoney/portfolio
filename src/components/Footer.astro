@@ -21,8 +21,7 @@ const whatsappHref = "https://wa.me/33773532515";
 <footer class="footer">
 	<div class="footer__grid">
 		<div class="footer__col footer__col--identity">
-			<p class="footer__name">Alexandre Lobo</p>
-			<p class="footer__tagline">Sites web et rédaction technique pour les PME techniques et scientifiques.</p>
+			<p class="footer__name"><span class="small-caps-first">A</span><span class="small-caps-rest">lexandre</span> <span class="small-caps-first">L</span><span class="small-caps-rest">obo</span></p>
 			<a class="footer__email" href={mailtoHref} target="_blank" rel="noopener noreferrer">{email}</a>
 			<div class="footer__socials">
 				<a
@@ -53,7 +52,7 @@ const whatsappHref = "https://wa.me/33773532515";
 
 	<div class="footer__bottom">
 		<p class="footer__bottom-text">© 2026 · Alexandre Lobo · SIRET 989 159 660 00012</p>
-		<p class="footer__bottom-text">Basé à Orléans · Missions à distance dans toute la France</p>
+		<p class="footer__bottom-text">Basé à Orléans · À distance dans toute la France</p>
 	</div>
 </footer>
 
@@ -78,23 +77,16 @@ const whatsappHref = "https://wa.me/33773532515";
 
 	.footer__name {
 		margin: 0;
-		font-family: "Instrument Serif", serif;
-		font-weight: 400;
-		letter-spacing: -0.04em;
-		line-height: 1.15;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		letter-spacing: 0.02em;
 		color: #fff;
-		font-size: 1.5rem;
+		font-size: 1rem;
 	}
 
-	.footer__tagline {
-		margin: 0;
-		font-family: "Montserrat", sans-serif;
-		font-weight: 500;
-		font-size: 1rem;
-		line-height: 1.6;
-		letter-spacing: -0.03em;
-		color: #fff;
-		max-width: 320px;
+	.footer__name .small-caps-rest {
+		text-transform: uppercase;
+		font-size: 0.78em;
 	}
 
 	.footer__email {

@@ -11,8 +11,8 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 ## Charte graphique
 
 ### Typographie
-- Titre : Instrument Serif, graisse 400, letter-spacing -0.04em (H1 : -0.05em, voir Échelle typographique)
-  - Instrument Serif n'existe sur Google Fonts qu'en graisse 400 (regular) — pas de 600/semibold, contrairement à l'ancienne police (Cormorant Garamond). Tous les titres sont donc en 400 malgré le `font-weight: 600` historique retiré partout ; ne pas réintroduire un `font-weight` supérieur à 400 sur cette police, ça n'aurait aucun effet réel (poids inexistant, pas de fallback synthétique fiable).
+- Titre : Instrument Serif, graisse 400, letter-spacing -0.03em (H1 : -0.04em, voir Échelle typographique)
+  - Instrument Serif n'existe sur Google Fonts qu'en graisse 400 (regular) — pas de 500/600, contrairement à l'ancienne police (Cormorant Garamond). Tous les titres sont donc en 400 malgré des demandes ponctuelles de graisse supérieure (600 historique, puis 500) ; vérifié directement via l'API `fonts.googleapis.com/css2` avec `wght@400;500` explicite, une seule `@font-face` en 400 est renvoyée. Ne pas réintroduire un `font-weight` supérieur à 400 sur cette police, ça n'aurait aucun effet réel (poids inexistant, pas de fallback synthétique fiable).
 - Corps / texte courant : Montserrat, graisse 500, letter-spacing -0.03em
 - Sur fond clair (#FAFAFA) : les titres sont en couleur primaire #00259E
 - Sur fond foncé (#00259E) : les titres sont en blanc #FFFFFF
@@ -20,9 +20,9 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - Montserrat italic disponible en deux graisses pour l'emphase ponctuelle : 300 italic (light italic) et 600 italic (bold italic — jamais 700, voir règle gras lourd ci-dessous). Chargées via Google Fonts (`Montserrat:ital,wght@0,500;0,600;1,300;1,600`). Pas d'usage actuel sur le site (utilisé un temps sur le hero de `pme-techniques.astro`, retiré depuis) — disponible si besoin futur.
 
 ### Échelle typographique
-- H1 : Instrument Serif 400 — 3.5 à 4.5rem desktop, line-height 1.02-1.05, **letter-spacing -0.05em** (plus serré que les autres titres, exception à la règle -0.04em)
-- H2 : Instrument Serif 400 — 2.25 à 3rem, line-height 1.05-1.08, letter-spacing -0.04em
-- H3 : Instrument Serif 400 — 1.5rem, line-height 1.1-1.15, letter-spacing -0.04em
+- H1 : Instrument Serif 400 — 3 à 4.25rem desktop (`clamp(3rem, 5.5vw, 4.25rem)`, mobile 2.5rem), line-height 1.02-1.05, **letter-spacing -0.04em** (plus serré que les autres titres, exception à la règle -0.03em)
+- H2 : Instrument Serif 400 — 2.25 à 3rem, line-height 1.05-1.08, letter-spacing -0.03em
+- H3 : Instrument Serif 400 — 1.5rem, line-height 1.1-1.15, letter-spacing -0.03em
 - Corps : Montserrat 500 — 1rem, line-height 1.6
 - Petit texte / légendes : Montserrat 500 — 0.875rem, line-height 1.5
 - Eyebrow / surtitres : Montserrat 500, 0.75rem, MAJUSCULES, letter-spacing +0.12em (exception à la règle -0.04/-0.03, réservée à cet usage)
@@ -77,7 +77,7 @@ Remplace l'eyebrow pour les libellés courts et isolés (mot-clé unique, label 
   - `font-variant-caps: all-small-caps` appliqué en plus, mais **sans effet visuel réel** : Montserrat n'a pas de glyphes small-caps (feature OpenType `smcp`), et le texte est déjà entièrement en majuscules (text-transform: uppercase) donc il n'y a pas de bas-de-casse à convertir. De vraies small-caps ne sont pas réalisables avec cette police — seule la mise en majuscules classique s'applique.
 - Fond : bleu primaire plein (#00259E), fixe — badge pensé pour un fond clair (#FAFAFA). Pas encore de variante fond foncé à ce jour (aucun badge actuel n'est posé sur une section bleue) — au besoin, créer `.badge--on-dark` sur le modèle de l'ancienne version (fond #ECF7E4, texte #1A2B6B), par cohérence avec `.btn--on-dark` / `.navlink--on-dark`.
 - Reflet : un halo blanc (`::before`, dégradé transparent → blanc 90% → transparent, `mix-blend-mode: screen`) glisse par-dessus de gauche à droite via `left`, contenu par `overflow: hidden` sur le badge. Passage (~1.5s) puis pause (~3.5s) hors du cadre, boucle infinie (cycle total 5s). Le halo est garanti invisible au repos car sa position de pause (`left: 125%`) le place entièrement hors des bornes du badge — contrairement à l'ancienne implémentation en `background-position`/`background-size` qui laissait un trait blanc résiduel visible au repos.
-- Usage actuel : `CompactLabel.astro` (eyebrows de section, ex. "Solution", "Offres", "Travaux"), la liste de types de contenu de `redaction-technique.astro` (`.rt-badge-row`), et le petit bouton "Voir" de la citation scientifique sur la home (`.hp-citation__badge`, un `<a class="badge">` cliquable — le badge peut être un lien, pas seulement un span statique).
+- Usage actuel : `CompactLabel.astro` (eyebrows de section, ex. "Ce que je fais", "Offres", "Travaux"), la liste de types de contenu de `redaction-technique.astro` (`.rt-badge-row`), et le petit bouton "Voir" d'une citation scientifique — sur la home (`.hp-citation__badge`) et sur `pme-techniques.astro` (`.pt-citation__badge`, même lien DOI) — un `<a class="badge">` cliquable, le badge peut être un lien, pas seulement un span statique.
 - **Exception fond vert** : `.rt-badge-row--green .badge` (section "Ce que je rédige" de `redaction-technique.astro`) override le fond en #ECF7E4 / texte #00259E, scopée à cette page uniquement via une classe locale — décision explicite ponctuelle, ne pas généraliser sans le demander (voir "Ne jamais introduire une couleur hors charte" ; ici #ECF7E4 reste dans la charte, seul son usage en fond de badge est une exception documentée).
 
 ### Icônes SVG
@@ -87,7 +87,7 @@ Pas d'animation/reflet sur les icônes — testé, abandonné après plusieurs a
   - **Piège CSS important** : `mask-image: url(var(--x))` est invalide (un `var()` ne peut pas être substitué à l'intérieur d'un `url()` non quoté — la tokenisation de `url()` a lieu avant la substitution). Il faut que la custom property contienne déjà `url(...)` en entier : construire la valeur en JS (`` `url("${iconUrl}")` ``) et la passer telle quelle via `define:vars`, puis référencer simplement `mask-image: var(--x)` en CSS.
 - Dégradé sur fond sombre (`.icon-mask--on-dark`) : `linear-gradient(90deg, #ffffff 0%, #ecf7e4 10%, #ecf7e4 90%, #ffffff 100%)`.
 - Dégradé sur fond clair (`.icon-mask--on-light`) : `linear-gradient(90deg, #4f69b8 0%, #00259e 100%)`.
-- Usage actuel : icônes du H1 du hero de `pme-techniques.astro` (web + atome, atome incliné à 4°), et les 6 icônes des cards problème/solution (`concurrence`, `roi`, `retard`, `structure`, `parcours`, `univers`).
+- Usage actuel : icônes du H1 du hero de `pme-techniques.astro` (web + atome, atome incliné à 4°), et les 3 icônes des cards de la section "Ce que je fais" (`langage` — réutilise le fichier `structure-icon.svg` en attendant une icône dédiée, `parcours`, `univers`). Les icônes `concurrence`, `roi` et `retard` existent encore dans `src/icons/` mais ne sont plus utilisées depuis la suppression de la section "Chaque mois sans stratégie web claire".
 - **Règle importante** : ne jamais modifier/retirer des paths d'une icône fournie par l'utilisateur, même si une forme semble être un artefact indésirable (ex. un fond de badge intégré au dessin) — c'est un contenu fourni, pas du code à corriger. Vérifier visuellement et demander confirmation avant tout changement de ce type.
 
 ### Cards et hover (cards cliquables)
@@ -118,7 +118,7 @@ Pattern répété sur toutes les grilles de cards cliquables ou à mise en avant
 - #ECF7E4 réservée au hover des boutons/navlinks sur fond foncé et aux badges/icônes d'accent — jamais en fond de section ou bloc de texte
 - Sur fond #FAFAFA : titres en #00259E, corps en #333333, boutons/navlinks en variante fond clair (`.btn--primary` / `.navlink`)
 - Sur fond #00259E : titres et corps en blanc, boutons/CTA en variante fond foncé (`.btn--on-dark`, blanc/#00259E), et boutons secondaires qui restent blancs
-- Le letter-spacing -0.04 s'applique aux titres, -0.03 au corps de texte
+- Le letter-spacing -0.04em ne s'applique plus qu'au H1 ; H2/H3 sont à -0.03em, aligné sur le corps de texte (voir Échelle typographique)
 
 ## Accessibilité : hiérarchie des titres
 

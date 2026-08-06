@@ -13,7 +13,7 @@ const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 	description="Cette page n'existe pas ou a été déplacée. Retournez à l'accueil pour retrouver les sites web et la rédaction technique d'Alexandre Lobo."
 	noindex
 >
-	<Topbar href={mailtoHref} variant="on-light" />
+	<Topbar href={mailtoHref} variant="on-light" links={[]} />
 
 	<main class="not-found">
 		<p class="eyebrow">Erreur 404</p>
@@ -45,7 +45,7 @@ const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 		letter-spacing: -0.04em;
 		line-height: 1.05;
 		color: #00259e;
-		font-size: clamp(2.25rem, 5vw, 3.5rem);
+		font-size: clamp(3rem, 5.5vw, 4.25rem);
 	}
 
 	.not-found__text {
@@ -62,6 +62,10 @@ const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 		.not-found {
 			padding: 64px 12px;
 			min-height: 50vh;
+		}
+
+		.not-found__title {
+			font-size: 2.5rem;
 		}
 	}
 </style>

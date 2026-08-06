@@ -67,7 +67,7 @@ const creativeWorkSchema = {
 	image={project.mainImage?.src}
 	structuredData={creativeWorkSchema}
 >
-	<Topbar href={mailtoHref} variant="on-light" />
+	<Topbar href={mailtoHref} variant="on-light" links={[]} />
 
 	<main>
 		<div class="project-hero">
@@ -177,10 +177,10 @@ const creativeWorkSchema = {
 		margin: 0;
 		font-family: "Instrument Serif", serif;
 		font-weight: 400;
-		letter-spacing: -0.05em;
+		letter-spacing: -0.04em;
 		line-height: 1.02;
 		color: #00259e;
-		font-size: clamp(3.5rem, 8vw, 4.5rem);
+		font-size: clamp(3rem, 5.5vw, 4.25rem);
 	}
 
 	.meta-columns {
@@ -353,7 +353,7 @@ const creativeWorkSchema = {
 		}
 
 		.project-title {
-			font-size: 3rem;
+			font-size: 2.5rem;
 		}
 
 		.meta-columns {
