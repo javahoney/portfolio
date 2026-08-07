@@ -21,7 +21,7 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 ### Échelle typographique
 - H1 : Instrument Serif 400 — 3 à 4.25rem desktop (`clamp(3rem, 5.5vw, 4.25rem)`, mobile 2.5rem), line-height 1.02-1.05, **letter-spacing -0.04em** (plus serré que les autres titres, exception à la règle -0.03em)
-- H2 : Instrument Serif 400 — 2.25 à 3rem, line-height 1.05-1.08, letter-spacing -0.03em
+- H2 : Instrument Serif 400 — 2 à 2.75rem (`clamp(2rem, 4vw, 2.75rem)`), line-height 1.05-1.08, letter-spacing -0.03em
 - H3 : Instrument Serif 400 — 1.5rem, line-height 1.1-1.15, letter-spacing -0.03em
 - Corps : Montserrat 500 — 1rem, line-height 1.6
 - Petit texte / légendes : Montserrat 500 — 0.875rem, line-height 1.5
