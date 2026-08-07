@@ -17,6 +17,17 @@ URL de mon site actuel :
 Merci !`;
 const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
+const auditBody = `Bonjour Alexandre,
+
+Ce que je vends :
+À qui :
+URL de mon site actuel :
+
+J'aimerais avoir un audit gratuit de mon site web.
+
+Merci d'avance`;
+const auditMailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(auditBody)}`;
+
 const homeProjectIds = ["gemilio", "yann-mokoko", "le-paris", "quiet-details"];
 const homeProjects = await Promise.all(
 	homeProjectIds.map(async (id) => {
@@ -50,7 +61,7 @@ const personSchema = {
 				<h1 class="hp-hero__title">Webmaster au service de votre croissance</h1>
 				<p class="hp-hero__subtitle">Parce que votre site mérite d'être aussi fort que votre vision. Je vous accompagne avec un process clair pour des résultats concrets.</p>
 			</div>
-			<a class="btn btn--on-dark" href={mailtoHref} target="_blank" rel="noopener noreferrer">Auditer mon site ►</a>
+			<a class="btn btn--on-dark" href={auditMailtoHref} target="_blank" rel="noopener noreferrer">Auditer mon site ►</a>
 		</div>
 	</section>
 
