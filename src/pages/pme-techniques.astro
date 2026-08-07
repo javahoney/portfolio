@@ -10,7 +10,6 @@ import atomIconUrl from "../icons/atom-icon.svg?url";
 import langageIconUrl from "../icons/write-icon.svg?url";
 import parcoursIconUrl from "../icons/parcours-icon.svg?url";
 import universIconUrl from "../icons/univers-icon.svg?url";
-import moleculeIconUrl from "../icons/molecule-icon.svg?url";
 
 const email = "contact@alexandre-lobo.com";
 const subject = "Nouveau projet";
@@ -43,7 +42,6 @@ const iconUrls = {
 	langageIconUrl: `url("${langageIconUrl}")`,
 	parcoursIconUrl: `url("${parcoursIconUrl}")`,
 	universIconUrl: `url("${universIconUrl}")`,
-	moleculeIconUrl: `url("${moleculeIconUrl}")`,
 };
 
 const studyData = [
@@ -60,8 +58,7 @@ const studyData = [
 const studyMax = Math.max(...studyData.map((row) => row.count));
 const studyTotal = studyData.reduce((sum, row) => sum + row.count, 0);
 
-const description =
-	"Refonte de site et SEO pour les entreprises qui doivent expliquer leur produit avant de le vendre. À partir de 2 500 €, un mois.";
+const description = "Refonte de site et SEO pour les entreprises qui vendent des produits complexes.";
 
 const serviceSchema = {
 	"@context": "https://schema.org",
@@ -111,7 +108,7 @@ const serviceSchema = {
 
 				<div class="pt-hero__cta">
 					<a class="btn btn--on-dark" href={previewMailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
-					<p class="pt-hero__ctanote">Petite maquette gratuite sous 48h</p>
+					<p class="pt-hero__ctanote">Maquette gratuite sous 48h</p>
 				</div>
 			</div>
 
@@ -171,7 +168,7 @@ const serviceSchema = {
 				<div class="pt-card">
 					<div class="pt-card__icon icon-mask icon-mask--on-light pt-card__icon--langage" aria-hidden="true"></div>
 					<h3 class="pt-card__label">Langage</h3>
-					<p class="pt-card__text">« Nos solutions » devient ce que vous faites.</p>
+					<p class="pt-card__text">Un vocabulaire précis, compris par vos clients, qui pousse à l'action.</p>
 				</div>
 				<div class="pt-card">
 					<div class="pt-card__icon icon-mask icon-mask--on-light pt-card__icon--univers" aria-hidden="true"></div>
@@ -186,6 +183,7 @@ const serviceSchema = {
 			</div>
 
 			<a class="btn btn--primary pt-section-cta" href={previewMailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
+			<p class="pt-section-ctanote">Maquette gratuite sous 48h</p>
 		</section>
 
 		<section class="section pt-travaux">
@@ -251,7 +249,6 @@ const serviceSchema = {
 						moléculaires, dont certains ont mené à des publications.
 					</p>
 					<p class="pt-citation">
-						<span class="pt-about__icon icon-mask icon-mask--on-light pt-about__icon--molecule" aria-hidden="true"></span>
 						co-auteur — <em>Eur. J. Org. Chem.</em>
 						<a class="badge pt-citation__badge" href="https://doi.org/10.1002/ejoc.202500083" target="_blank" rel="noopener noreferrer">Voir</a>
 					</p>
@@ -266,11 +263,12 @@ const serviceSchema = {
 
 		<section class="section pt-process">
 			<CompactLabel text="Comment ça se passe" srHeading />
-			<div class="pt-lines">
-				<p>Je vous envoie une direction pour votre page d'accueil, sous 48 h.</p>
-				<p>Si ça vous parle, on parle stratégie, on parle chiffres. Sinon vous gardez l'aperçu.</p>
-			</div>
+			<ul class="pt-numbered-list">
+				<li><span class="badge pt-inline-badge">1</span> Je vous envoie une direction pour votre page d'accueil, sous 48 h.</li>
+				<li><span class="badge pt-inline-badge">2</span> Si ça vous parle, on parle stratégie, on parle chiffres. Sinon vous gardez l'aperçu.</li>
+			</ul>
 			<a class="btn btn--primary pt-section-cta" href={previewMailtoHref} target="_blank" rel="noopener noreferrer">Voir à quoi mon site pourrait ressembler</a>
+			<p class="pt-section-ctanote">Maquette gratuite sous 48h</p>
 		</section>
 	</main>
 
@@ -348,7 +346,6 @@ const serviceSchema = {
 	.pt-data {
 		width: 100%;
 		background: #fff;
-		border: 1px solid #e5e5e5;
 		border-radius: 8px;
 		padding: 32px;
 	}
@@ -519,25 +516,17 @@ const serviceSchema = {
 		color: #333333;
 	}
 
-	.pt-lines {
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-	}
-
-	.pt-lines p {
-		margin: 0;
-		max-width: 680px;
-		font-family: "Montserrat", sans-serif;
-		font-weight: 500;
-		letter-spacing: -0.03em;
-		line-height: 1.6;
-		color: #333333;
-		font-size: 1rem;
-	}
-
 	.pt-section-cta {
 		margin-top: 40px;
+	}
+
+	.pt-section-ctanote {
+		margin: 12px 0 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 0.875rem;
+		letter-spacing: -0.03em;
+		color: #5a6488;
 	}
 
 	.pt-card-grid {
@@ -634,6 +623,8 @@ const serviceSchema = {
 	}
 
 	.pt-offer {
+		position: relative;
+		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -641,6 +632,30 @@ const serviceSchema = {
 		background: #fff;
 		border: 1px solid #e5e5e5;
 		padding: 32px;
+	}
+
+	.pt-offer::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -60%;
+		width: 40%;
+		height: 100%;
+		background: linear-gradient(135deg, rgba(0, 37, 158, 0) 0%, rgba(0, 37, 158, 0.025) 50%, rgba(0, 37, 158, 0) 100%);
+		pointer-events: none;
+	}
+
+	.pt-offer:hover::before {
+		animation: pt-offer-shine 0.35s ease-out;
+	}
+
+	@keyframes pt-offer-shine {
+		0% {
+			left: -60%;
+		}
+		100% {
+			left: 120%;
+		}
 	}
 
 	.pt-offer__title {
@@ -797,19 +812,6 @@ const serviceSchema = {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-	}
-
-	.pt-about__icon {
-		display: inline-block;
-		width: 48px;
-		height: 48px;
-		margin: 0 8px 0 0;
-		vertical-align: middle;
-	}
-
-	.pt-about__icon--molecule {
-		-webkit-mask-image: var(--moleculeIconUrl);
-		mask-image: var(--moleculeIconUrl);
 	}
 
 	.pt-citation {

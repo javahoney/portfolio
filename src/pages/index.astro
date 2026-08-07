@@ -26,8 +26,7 @@ const homeProjects = await Promise.all(
 	})
 );
 
-const description =
-	"Conception de sites web et rédaction technique pour les entreprises qui vendent des produits complexes. Chimiste de formation, passé par le laboratoire.";
+const description = "Conception de sites web, refonte, SEO et rédaction technique pour les PME françaises.";
 
 const personSchema = {
 	"@context": "https://schema.org",
@@ -40,7 +39,7 @@ const personSchema = {
 ---
 
 <Layout
-	title="Alexandre Lobo — Sites web et rédaction technique"
+	title="Alexandre Lobo — Création et refonte de site web"
 	description={description}
 	structuredData={personSchema}
 >
@@ -48,8 +47,8 @@ const personSchema = {
 		<Topbar href={mailtoHref} links={[{ label: "Projets", href: "/projets" }]} />
 		<div class="hp-hero__inner">
 			<div class="hp-hero__heading">
-				<h1 class="hp-hero__title">Des sites clairs pour des entreprises avec des produits complexes.</h1>
-				<p class="hp-hero__subtitle">Chimiste de formation, passé par le laboratoire. Basé à Orléans, je travaille à distance.</p>
+				<h1 class="hp-hero__title">Webmaster au service de votre croissance</h1>
+				<p class="hp-hero__subtitle">Parce que votre site mérite d'être aussi fort que votre vision. Je vous accompagne avec un process clair pour des résultats concrets.</p>
 			</div>
 			<a class="btn btn--on-dark" href={mailtoHref} target="_blank" rel="noopener noreferrer">Écrire</a>
 		</div>
@@ -57,7 +56,7 @@ const personSchema = {
 
 	<main>
 		<section class="section hp-doors">
-			<h2 class="sr-only">Sites web et rédaction technique</h2>
+			<h2 class="sr-only">Sites web, rédaction technique et marque blanche</h2>
 			<div class="hp-door-grid">
 				<a class="hp-door" href="/pme-techniques">
 					<h3 class="hp-door__title">Sites web</h3>
@@ -69,25 +68,24 @@ const personSchema = {
 					<p class="hp-door__text">Fiches produits, brochures, livres blancs. Sans refonte de site.</p>
 					<span class="hp-door__link">Voir la prestation →</span>
 				</a>
+				<a class="hp-door" href="/marque-blanche">
+					<h3 class="hp-door__title">Marque blanche</h3>
+					<p class="hp-door__text">Production Webflow et Framer en white label pour vos projets de site vitrine.</p>
+					<span class="hp-door__link">Voir la prestation →</span>
+				</a>
 			</div>
 		</section>
 
 		<section class="section hp-about">
 			<div class="hp-about__layout">
 				<div class="hp-about__content">
-					<CompactLabel text="Qui je suis" srHeading />
+					<CompactLabel text="Qui je suis" />
+					<h2 class="hp-about__heading">Votre webmaster</h2>
 					<p class="hp-body">
-						Je faisais de la synthèse organique de molécules à intérêt thérapeutique. J'ai travaillé sur plusieurs
-						projets et motifs moléculaires, dont certains ont mené à des publications.
-					</p>
-					<p class="hp-citation">
-						co-auteur — <em>Eur. J. Org. Chem.</em>
-						<a class="badge hp-citation__badge" href="https://doi.org/10.1002/ejoc.202500083" target="_blank" rel="noopener noreferrer">Voir</a>
-					</p>
-					<p class="hp-body">
-						Je vois la synthèse multi-étape comme un jeu de Lego. Optimiser les process et les stratégies d'accès.
-						J'aime résoudre un problème complexe de la manière la plus simple et élégante. En ça, j'aime le marketing
-						et le design : ce qui manque le plus dans les milieux scientifiques.
+						Webmaster, je gère votre site de A à Z. Passionné par les sciences et par le web, je vous accompagne
+						sur la stratégie, l'univers graphique, le développement, la rédaction et le référencement. Je suis
+						votre partenaire web qui a un seul objectif : vous accompagner pour atteindre vos chiffres grâce à une
+						présence en ligne conçue pour vos clients.
 					</p>
 				</div>
 				<img class="hp-about__photo" src="/images/photo-profil.png" alt="Alexandre Lobo" />
@@ -95,7 +93,8 @@ const personSchema = {
 		</section>
 
 		<section class="section hp-work">
-			<CompactLabel text="Travaux" srHeading />
+			<CompactLabel text="Travaux" />
+			<h2 class="hp-work__heading">Mes réalisations</h2>
 			<div class="hp-work-grid">
 				{homeProjects.map((project) => (
 					<a class="hp-work-item" href={`/projets/${project.id}`}>
@@ -187,28 +186,6 @@ const personSchema = {
 		margin-bottom: 0;
 	}
 
-	.hp-citation {
-		margin: -8px 0 24px;
-		max-width: 680px;
-		font-family: "Montserrat", sans-serif;
-		font-weight: 500;
-		font-size: 0.875rem;
-		line-height: 1.5;
-		letter-spacing: -0.03em;
-		color: #5a6488;
-	}
-
-	.hp-citation__badge {
-		margin-left: 8px;
-		vertical-align: middle;
-		text-decoration: none;
-		border-radius: 0;
-	}
-
-	.hp-citation__badge::before {
-		content: none;
-	}
-
 	.hp-about__layout {
 		display: flex;
 		align-items: center;
@@ -236,7 +213,7 @@ const personSchema = {
 
 	.hp-door-grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		gap: 24px;
 	}
 
@@ -312,6 +289,26 @@ const personSchema = {
 		font-size: 0.875rem;
 		letter-spacing: -0.03em;
 		color: #00259e;
+	}
+
+	.hp-about__heading {
+		margin: 0 0 16px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+		color: #00259e;
+		font-size: 1.5rem;
+	}
+
+	.hp-work__heading {
+		margin: 0 0 24px;
+		font-family: "Instrument Serif", serif;
+		font-weight: 400;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+		color: #00259e;
+		font-size: 1.5rem;
 	}
 
 	.hp-work-grid {
