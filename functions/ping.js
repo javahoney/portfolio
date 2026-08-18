@@ -9,12 +9,7 @@ export async function onRequestGet(context) {
     client_id: clientId,
     events: [
       {
-        name: "email_open",
-        params: {
-          source: "signature",
-          medium: "email",
-          campaign: "prospection",
-        },
+        name: "ping",
       },
     ],
   };
@@ -29,12 +24,12 @@ export async function onRequestGet(context) {
 
   waitUntil(sendToGA4);
 
-  const pixel = Uint8Array.from(
+  const gif = Uint8Array.from(
     atob("R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="),
     (c) => c.charCodeAt(0)
   );
 
-  return new Response(pixel, {
+  return new Response(gif, {
     headers: {
       "Content-Type": "image/gif",
       "Cache-Control": "no-store, no-cache, must-revalidate",
