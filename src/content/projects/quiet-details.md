@@ -13,8 +13,12 @@ testimonial:
   role: "Fondatrice, Quiet Details"
 ---
 
-**Le besoin.** Le site de Quiet Details était en cours de construction sur Framer, mais butait sur plusieurs blocages techniques et éléments non finalisés, retardant sa mise en ligne. Alexia Ravel recherchait un appui ponctuel et réactif pour terminer proprement le site sans repartir de zéro.
+Le site de Quiet Details était en cours de construction sur Framer, mais butait sur plusieurs blocages techniques et éléments non finalisés, retardant sa mise en ligne. Alexia Ravel recherchait un appui ponctuel et réactif pour terminer proprement le site sans repartir de zéro.
 
-**Ce qui a été livré.** Une intervention ciblée de finalisation et de débogage sur l'existant : correction des dysfonctionnements identifiés, ajustements de mise en page et de responsive, finitions des interactions et du contenu, jusqu'à un site pleinement fonctionnel et prêt à être publié.
+### Ce que j'ai livré
 
-**Résultat.** Un site en ligne, fonctionnel et fidèle à l'identité épurée de la marque.
+Une intervention ciblée de finalisation et de débogage sur l'existant : correction des dysfonctionnements identifiés, ajustements de mise en page et de responsive, finitions des interactions et du contenu, jusqu'à un site pleinement fonctionnel et prêt à être publié.
+
+### Le résultat
+
+Un site en ligne, fonctionnel et fidèle à l'identité épurée de la marque.
