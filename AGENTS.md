@@ -11,8 +11,8 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 ## Charte graphique
 
 ### Typographie
-- Titre : Instrument Serif, graisse 400, letter-spacing -0.03em (H1 : -0.04em, voir Échelle typographique)
-  - Instrument Serif n'existe sur Google Fonts qu'en graisse 400 (regular) — pas de 500/600, contrairement à l'ancienne police (Cormorant Garamond). Tous les titres sont donc en 400 malgré des demandes ponctuelles de graisse supérieure (600 historique, puis 500) ; vérifié directement via l'API `fonts.googleapis.com/css2` avec `wght@400;500` explicite, une seule `@font-face` en 400 est renvoyée. Ne pas réintroduire un `font-weight` supérieur à 400 sur cette police, ça n'aurait aucun effet réel (poids inexistant, pas de fallback synthétique fiable).
+- Titre : Montaga, graisse 400, letter-spacing -0.03em (H1 : -0.04em, voir Échelle typographique)
+  - Montaga n'existe sur Google Fonts qu'en graisse 400 (regular) — pas de 500/600, comme les polices de titre précédentes (Instrument Serif, puis Cormorant Garamond à l'origine). Tous les titres sont donc en 400 malgré des demandes ponctuelles de graisse supérieure (600 historique, puis 500) ; vérifié directement via l'API `fonts.googleapis.com/css2` avec `wght@400;500;600;700` explicite, une seule `@font-face` en 400 est renvoyée. Ne pas réintroduire un `font-weight` supérieur à 400 sur cette police, ça n'aurait aucun effet réel (poids inexistant, pas de fallback synthétique fiable).
 - Corps / texte courant : Montserrat, graisse 500, letter-spacing -0.03em
 - Sur fond clair (#FAFAFA) : les titres sont en couleur primaire #00259E
 - Sur fond foncé (#00259E) : les titres sont en blanc #FFFFFF
@@ -20,9 +20,9 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - Montserrat italic disponible en deux graisses pour l'emphase ponctuelle : 300 italic (light italic) et 600 italic (bold italic — jamais 700, voir règle gras lourd ci-dessous). Chargées via Google Fonts (`Montserrat:ital,wght@0,500;0,600;1,300;1,600`). Pas d'usage actuel sur le site (utilisé un temps sur le hero de `pme-techniques.astro`, retiré depuis) — disponible si besoin futur.
 
 ### Échelle typographique
-- H1 : Instrument Serif 400 — 3 à 4.25rem desktop (`clamp(3rem, 5.5vw, 4.25rem)`, mobile 2.5rem), line-height 1.02-1.05, **letter-spacing -0.04em** (plus serré que les autres titres, exception à la règle -0.03em)
-- H2 : Instrument Serif 400 — 2 à 2.75rem (`clamp(2rem, 4vw, 2.75rem)`), line-height 1.05-1.08, letter-spacing -0.03em
-- H3 : Instrument Serif 400 — 1.5rem, line-height 1.1-1.15, letter-spacing -0.03em
+- H1 : Montaga 400 — 3 à 4.25rem desktop (`clamp(3rem, 5.5vw, 4.25rem)`, mobile 2.5rem), line-height 1.02-1.05, **letter-spacing -0.04em** (plus serré que les autres titres, exception à la règle -0.03em)
+- H2 : Montaga 400 — 2 à 2.75rem (`clamp(2rem, 4vw, 2.75rem)`), line-height 1.05-1.08, letter-spacing -0.03em
+- H3 : Montaga 400 — 1.5rem, line-height 1.1-1.15, letter-spacing -0.03em
 - Corps : Montserrat 500 — 1rem, line-height 1.6
 - Petit texte / légendes : Montserrat 500 — 0.875rem, line-height 1.5
 - Eyebrow / surtitres : Montserrat 500, 0.75rem, MAJUSCULES, letter-spacing +0.12em (exception à la règle -0.04/-0.03, réservée à cet usage)
