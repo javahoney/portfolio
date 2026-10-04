@@ -2,6 +2,7 @@
 name: "KOM JM"
 category: "Nettoyage haut de gamme éco-certifié"
 order: 6
+hidden: true
 overview: "Entreprise de nettoyage haut de gamme et éco-certifiée, intervenant auprès des particuliers et professionnels en Île-de-France."
 services: ["Prototypage", "Design system", "UI/UX", "Prototypes interactifs"]
 liveUrl: "https://kom-jm.netlify.app/"

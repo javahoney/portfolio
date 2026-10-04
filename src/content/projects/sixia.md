@@ -4,7 +4,7 @@ category: "Logiciel de gestion immobilière"
 order: 8
 overview: "Sixia est un logiciel de gestion qui aide les gérances immobilières à gagner du temps sur leurs processus récurrents."
 services: ["UI/UX", "Design", "Développement Framer"]
-liveUrl: "https://experienced-minds-588801.framer.app/"
+liveUrl: "https://www.sixia.ch/"
 mainImage: "../../assets/projects/sixia-1.webp"
 galleryImages: ["../../assets/projects/sixia-2.webp", "../../assets/projects/sixia-3.webp", "../../assets/projects/sixia-4.webp"]
 ---

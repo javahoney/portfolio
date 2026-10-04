@@ -8,17 +8,7 @@ import framerIconUrl from "../icons/framer-icon.svg?url";
 import figmaIconUrl from "../icons/fimga-icon.svg?url";
 
 const email = "contact@alexandre-lobo.com";
-const subject = "Besoin de renfort - création de site web";
-const body = `Bonjour Alexandre,
-
-Je vous contacte au sujet de votre offre agence en marque blanche.
-
-Type de projet à externaliser :
-Volume estimé (ponctuel / récurrent) :
-Délai souhaité :
-
-Merci !`;
-const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+const mailtoHref = `mailto:${email}`;
 
 const iconUrls = {
 	webflowIconUrl: `url("${webflowIconUrl}")`,
@@ -80,7 +70,7 @@ const serviceSchema = {
 ---
 
 <Layout
-	title="Offre agence — Production Webflow / Framer en marque blanche | Alexandre Lobo"
+	title="Marque blanche Webflow / Framer — Alexandre Lobo"
 	description={description}
 	structuredData={serviceSchema}
 >
@@ -367,7 +357,7 @@ const serviceSchema = {
 	}
 
 	.mb-header__eyebrow.eyebrow {
-		color: #ecf7e4;
+		color: #b1bce0;
 	}
 
 	.mb-header__title {
@@ -446,8 +436,8 @@ const serviceSchema = {
 	}
 
 	.scope-bullet--check {
-		background: #ecf7e4;
-		color: #00259e;
+		background: #00259e;
+		color: #fff;
 	}
 
 	.scope-bullet--cross {
@@ -586,8 +576,8 @@ const serviceSchema = {
 
 	.option-card__badge {
 		align-self: flex-start;
-		background: #ecf7e4;
-		color: #00259e;
+		background: #00259e;
+		color: #fff;
 		font-family: "Montserrat", sans-serif;
 		font-weight: 600;
 		font-size: 0.875rem;

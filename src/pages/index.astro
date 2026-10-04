@@ -5,28 +5,11 @@ import Layout from "../layouts/Layout.astro";
 import CompactLabel from "../components/CompactLabel.astro";
 import Footer from "../components/Footer.astro";
 import Topbar from "../components/Topbar.astro";
+import WhatsAppIcon from "../components/WhatsAppIcon.astro";
 
 const email = "contact@alexandre-lobo.com";
-const subject = "Nouveau projet";
-const body = `Bonjour Alexandre,
-
-Ce que je vends :
-À qui :
-URL de mon site actuel :
-
-Merci !`;
-const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-const auditBody = `Bonjour Alexandre,
-
-Ce que je vends :
-À qui :
-URL de mon site actuel :
-
-J'aimerais avoir un audit gratuit de mon site web.
-
-Merci d'avance`;
-const auditMailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(auditBody)}`;
+const mailtoHref = `mailto:${email}`;
+const whatsappHref = "https://wa.me/33773532515";
 
 const homeProjectIds = ["gemilio", "yann-mokoko", "le-paris", "quiet-details"];
 const homeProjects = await Promise.all(
@@ -37,7 +20,7 @@ const homeProjects = await Promise.all(
 	})
 );
 
-const description = "Conception de sites web, refonte, SEO et rédaction technique pour les PME françaises.";
+const description = "Création de sites web sur-mesure pour PME et entrepreneurs : design, SEO et évolutivité, sans développeur.";
 
 const personSchema = {
 	"@context": "https://schema.org",
@@ -58,48 +41,43 @@ const personSchema = {
 		<Topbar href={mailtoHref} links={[{ label: "Projets", href: "/projets" }]} />
 		<div class="hp-hero__inner">
 			<div class="hp-hero__heading">
-				<h1 class="hp-hero__title">Webmaster au service de votre croissance</h1>
-				<p class="hp-hero__subtitle">Parce que votre site mérite d'être aussi fort que votre vision. Je vous accompagne avec un process clair pour des résultats concrets.</p>
+				<h1 class="hp-hero__title">Je crée des sites qui servent votre business</h1>
+				<p class="hp-hero__subtitle">Je conçois des sites sur-mesure pour les PME et entrepreneurs qui veulent un site design, visible sur Google, et facile à faire évoluer sans développeur.</p>
+				<div class="hp-hero__cta">
+					<a class="btn btn--secondary" href="/projets">Voir tous mes projets</a>
+					<a class="btn btn--on-dark" href={whatsappHref} target="_blank" rel="noopener noreferrer">Me contacter</a>
+				</div>
 			</div>
-			<a class="btn btn--on-dark" href={auditMailtoHref} target="_blank" rel="noopener noreferrer">Auditer mon site ►</a>
+
+			<a class="hp-hero__photo-link" href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Discuter avec moi sur WhatsApp">
+				<img class="hp-hero__photo" src="/images/photo-profil.png" alt="Alexandre Lobo" />
+				<span class="hp-hero__bubble" aria-hidden="true">
+					<WhatsAppIcon size={14} />
+					Discuter avec moi
+				</span>
+				<span class="hp-hero__ping" aria-hidden="true">
+					<WhatsAppIcon size={16} />
+				</span>
+			</a>
 		</div>
 	</section>
 
 	<main>
-		<section class="section hp-doors">
-			<h2 class="sr-only">Sites web, rédaction technique et marque blanche</h2>
-			<div class="hp-door-grid">
-				<a class="hp-door" href="/pme-techniques">
-					<h3 class="hp-door__title">Sites web</h3>
-					<p class="hp-door__text">Conception, refonte, référencement. Contenu rédigé compris.</p>
-					<span class="hp-door__link">Voir la prestation →</span>
-				</a>
-				<a class="hp-door" href="/redaction-technique">
-					<h3 class="hp-door__title">Rédaction technique</h3>
-					<p class="hp-door__text">Fiches produits, brochures, livres blancs. Sans refonte de site.</p>
-					<span class="hp-door__link">Voir la prestation →</span>
-				</a>
-				<a class="hp-door" href="/marque-blanche">
-					<h3 class="hp-door__title">Marque blanche</h3>
-					<p class="hp-door__text">Production Webflow et Framer en white label pour vos projets de site vitrine.</p>
-					<span class="hp-door__link">Voir la prestation →</span>
-				</a>
-			</div>
-		</section>
-
-		<section class="section hp-about">
-			<div class="hp-about__layout">
-				<div class="hp-about__content">
-					<CompactLabel text="Qui je suis" />
-					<h2 class="hp-about__heading">Votre webmaster</h2>
-					<p class="hp-body">
-						Webmaster, je gère votre site de A à Z. Passionné par les sciences et par le web, je vous accompagne
-						sur la stratégie, l'univers graphique, le développement, la rédaction et le référencement. Je suis
-						votre partenaire web qui a un seul objectif : vous accompagner pour atteindre vos chiffres grâce à une
-						présence en ligne conçue pour vos clients.
-					</p>
+		<section class="section hp-pitch">
+			<CompactLabel text="Pourquoi moi" srHeading />
+			<div class="hp-pitch-grid">
+				<div class="hp-pitch-card">
+					<h3 class="hp-pitch-card__title">Un site pensé business</h3>
+					<p class="hp-pitch-card__text">Chaque page est construite pour attirer et convaincre, en combinant un design impactant et une base SEO optimisée.</p>
 				</div>
-				<img class="hp-about__photo" src="/images/photo-profil.png" alt="Alexandre Lobo" />
+				<div class="hp-pitch-card">
+					<h3 class="hp-pitch-card__title">Renforcez l'image de marque</h3>
+					<p class="hp-pitch-card__text">Chaque site doit être unique pour refléter votre identité. Je crée un site à votre image, en harmonie avec votre marque et vos enjeux.</p>
+				</div>
+				<div class="hp-pitch-card">
+					<h3 class="hp-pitch-card__title">Prenez le contrôle de votre site</h3>
+					<p class="hp-pitch-card__text">Je développe votre site comme un outil business qui évolue, je le pense de manière à ce que vous soyez entièrement autonome sur votre contenu.</p>
+				</div>
 			</div>
 		</section>
 
@@ -121,7 +99,7 @@ const personSchema = {
 					</a>
 				))}
 			</div>
-			<a class="text-link hp-work__all" href="/projets">Tous les projets →</a>
+			<a class="btn btn--primary hp-work__all" href="/projets">Tous les projets →</a>
 		</section>
 
 		<section class="section hp-contact">
@@ -129,7 +107,7 @@ const personSchema = {
 			<h2 class="hp-contact__heading">Écrivez-moi.</h2>
 			<p class="hp-body">Réponse sous 24 h ouvrées.</p>
 			<div class="hp-contact__actions">
-				<a class="btn btn--primary" href={mailtoHref} target="_blank" rel="noopener noreferrer">Écrire</a>
+				<a class="btn btn--primary" href={mailtoHref} target="_blank" rel="noopener noreferrer">Me contacter</a>
 				<a class="text-link" href={mailtoHref} target="_blank" rel="noopener noreferrer">{email}</a>
 			</div>
 		</section>
@@ -137,6 +115,22 @@ const personSchema = {
 
 	<Footer />
 </Layout>
+
+<script>
+	function setupHeroBubble() {
+		const link = document.querySelector(".hp-hero__photo-link");
+		const bubble = document.querySelector(".hp-hero__bubble");
+		if (!link || !bubble) return;
+
+		link.addEventListener("mousemove", (event) => {
+			const rect = link.getBoundingClientRect();
+			bubble.style.left = `${event.clientX - rect.left}px`;
+			bubble.style.top = `${event.clientY - rect.top}px`;
+		});
+	}
+
+	document.addEventListener("astro:page-load", setupHeroBubble);
+</script>
 
 <style>
 	.hp-hero {
@@ -148,8 +142,8 @@ const personSchema = {
 		margin: 0 auto;
 		padding: 64px 48px 96px;
 		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
+		align-items: center;
+		justify-content: space-between;
 		gap: 64px;
 	}
 
@@ -157,12 +151,12 @@ const personSchema = {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 16px;
+		gap: 24px;
 	}
 
 	.hp-hero__title {
 		margin: 0;
-		max-width: 800px;
+		max-width: 640px;
 		font-family: "Montaga", serif;
 		font-weight: 400;
 		letter-spacing: -0.04em;
@@ -173,13 +167,116 @@ const personSchema = {
 
 	.hp-hero__subtitle {
 		margin: 0;
-		max-width: 640px;
+		max-width: 560px;
 		font-family: "Montserrat", sans-serif;
 		font-weight: 500;
 		font-size: 1rem;
 		line-height: 1.6;
 		letter-spacing: -0.03em;
 		color: #fff;
+	}
+
+	.hp-hero__cta {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		flex-wrap: wrap;
+	}
+
+	.hp-hero__photo-link {
+		position: relative;
+		flex-shrink: 0;
+		display: block;
+		width: 150px;
+		height: 150px;
+		text-decoration: none;
+	}
+
+	.hp-hero__photo-link:hover {
+		cursor: none;
+	}
+
+	.hp-hero__photo {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+		display: block;
+		animation: hp-glow 5s ease-in-out infinite;
+	}
+
+	.hp-hero__bubble {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		transform: translate(-50%, -130%);
+		background: #25d366;
+		color: #fff;
+		white-space: nowrap;
+		padding: 12px 20px;
+		border-radius: 999px;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		letter-spacing: -0.03em;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.2s ease-out;
+	}
+
+	.hp-hero__photo-link:hover .hp-hero__bubble {
+		opacity: 1;
+	}
+
+	@keyframes hp-glow {
+		0%,
+		100% {
+			box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.15);
+		}
+		50% {
+			box-shadow: 0 0 18px 5px rgba(255, 255, 255, 0.3);
+		}
+	}
+
+	.hp-hero__ping {
+		position: absolute;
+		top: -4px;
+		right: -4px;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background: #25d366;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transform: scale(0.6);
+		pointer-events: none;
+		animation: hp-ping 6s ease-in-out infinite;
+	}
+
+	@keyframes hp-ping {
+		0% {
+			opacity: 0;
+			transform: scale(0.6);
+		}
+		8% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		30% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		38% {
+			opacity: 0;
+			transform: scale(0.6);
+		}
 	}
 
 	.hp-body {
@@ -197,50 +294,26 @@ const personSchema = {
 		margin-bottom: 0;
 	}
 
-	.hp-about__layout {
-		display: flex;
-		align-items: center;
-		gap: 16px;
+	.hp-pitch {
+		padding-top: 96px;
 	}
 
-	.hp-about__photo {
-		flex-shrink: 0;
-		width: 112px;
-		height: 112px;
-		border-radius: 50%;
-		object-fit: cover;
-		object-position: center top;
-	}
-
-	.hp-about__content {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
-
-	.hp-doors {
-		padding-top: 64px;
-	}
-
-	.hp-door-grid {
+	.hp-pitch-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 24px;
 	}
 
-	.hp-door {
+	.hp-pitch-card {
 		position: relative;
 		overflow: hidden;
-		display: block;
 		background: #fff;
 		border: 1px solid #e5e5e5;
 		padding: 40px;
-		text-decoration: none;
-		color: inherit;
 		transition: border-color 0.2s ease-out;
 	}
 
-	.hp-door::before {
+	.hp-pitch-card::before {
 		content: "";
 		position: absolute;
 		top: 0;
@@ -251,21 +324,15 @@ const personSchema = {
 		pointer-events: none;
 	}
 
-	.hp-door:hover {
+	.hp-pitch-card:hover {
 		border-color: #00259e;
 	}
 
-	.hp-door:hover::before {
-		animation: hp-door-shine 0.35s ease-out;
+	.hp-pitch-card:hover::before {
+		animation: hp-pitch-card-shine 0.35s ease-out;
 	}
 
-	.hp-door:hover .hp-door__title {
-		text-decoration: underline;
-		text-decoration-thickness: 2px;
-		text-underline-offset: 4px;
-	}
-
-	@keyframes hp-door-shine {
+	@keyframes hp-pitch-card-shine {
 		0% {
 			left: -60%;
 		}
@@ -274,7 +341,7 @@ const personSchema = {
 		}
 	}
 
-	.hp-door__title {
+	.hp-pitch-card__title {
 		margin: 0 0 12px;
 		font-family: "Montaga", serif;
 		font-weight: 400;
@@ -284,8 +351,8 @@ const personSchema = {
 		color: #00259e;
 	}
 
-	.hp-door__text {
-		margin: 0 0 24px;
+	.hp-pitch-card__text {
+		margin: 0;
 		font-family: "Montserrat", sans-serif;
 		font-weight: 500;
 		font-size: 0.875rem;
@@ -294,22 +361,8 @@ const personSchema = {
 		color: #333333;
 	}
 
-	.hp-door__link {
-		font-family: "Montserrat", sans-serif;
-		font-weight: 600;
-		font-size: 0.875rem;
-		letter-spacing: -0.03em;
-		color: #00259e;
-	}
-
-	.hp-about__heading {
-		margin: 0 0 24px;
-		font-family: "Montaga", serif;
-		font-weight: 400;
-		letter-spacing: -0.03em;
-		line-height: 1.06;
-		color: #00259e;
-		font-size: clamp(2rem, 4vw, 2.75rem);
+	.hp-work {
+		padding-top: 0;
 	}
 
 	.hp-work__heading {
@@ -399,33 +452,29 @@ const personSchema = {
 	@media (max-width: 640px) {
 		.hp-hero__inner {
 			padding: 40px 12px 64px;
-			gap: 24px;
+			gap: 40px;
+			flex-direction: column;
+			align-items: flex-start;
 		}
 
 		.hp-hero__title {
 			font-size: 2.5rem;
 		}
 
-		.hp-doors {
-			padding-top: 40px;
+		.hp-hero__photo-link {
+			width: 110px;
+			height: 110px;
 		}
 
-		.hp-about__layout {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 24px;
+		.hp-pitch {
+			padding-top: 64px;
 		}
 
-		.hp-about__photo {
-			width: 96px;
-			height: 96px;
-		}
-
-		.hp-door-grid {
+		.hp-pitch-grid {
 			grid-template-columns: 1fr;
 		}
 
-		.hp-door {
+		.hp-pitch-card {
 			padding: 24px;
 		}
 

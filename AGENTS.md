@@ -14,9 +14,9 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - Titre : Montaga, graisse 400, letter-spacing -0.03em (H1 : -0.04em, voir Échelle typographique)
   - Montaga n'existe sur Google Fonts qu'en graisse 400 (regular) — pas de 500/600, comme les polices de titre précédentes (Instrument Serif, puis Cormorant Garamond à l'origine). Tous les titres sont donc en 400 malgré des demandes ponctuelles de graisse supérieure (600 historique, puis 500) ; vérifié directement via l'API `fonts.googleapis.com/css2` avec `wght@400;500;600;700` explicite, une seule `@font-face` en 400 est renvoyée. Ne pas réintroduire un `font-weight` supérieur à 400 sur cette police, ça n'aurait aucun effet réel (poids inexistant, pas de fallback synthétique fiable).
 - Corps / texte courant : Montserrat, graisse 500, letter-spacing -0.03em
-- Sur fond clair (#FAFAFA) : les titres sont en couleur primaire #00259E
+- Sur fond clair (#FFF9F4) : les titres sont en couleur primaire #00259E
 - Sur fond foncé (#00259E) : les titres sont en blanc #FFFFFF
-- Sur fond clair (#FAFAFA) : le texte courant (corps) est en #333333
+- Sur fond clair (#FFF9F4) : le texte courant (corps) est en #333333
 - Montserrat italic disponible en deux graisses pour l'emphase ponctuelle : 300 italic (light italic) et 600 italic (bold italic — jamais 700, voir règle gras lourd ci-dessous). Chargées via Google Fonts (`Montserrat:ital,wght@0,500;0,600;1,300;1,600`). Pas d'usage actuel sur le site (utilisé un temps sur le hero de `pme-techniques.astro`, retiré depuis) — disponible si besoin futur.
 
 ### Échelle typographique
@@ -30,13 +30,13 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 ### Couleurs
 - Primaire : #00259E (bleu foncé) — fond des sections fortes, texte/titres blancs par-dessus, aussi couleur des titres, fond des boutons/navlinks standards (fond clair) et texte des boutons secondaires
-- Secondaire : #ECF7E4 (vert très pâle) — hover des boutons/navlinks sur fond foncé (voir Boutons et CTA), fond des badges/icônes d'accent (ex. option-card__badge, scope-bullet--check) — jamais en fond de section ou bloc de texte
-- Fond principal : #FAFAFA
+- Fond principal : #FFF9F4
 - Fond secondaire : #00259E → texte et titres en blanc (#FFFFFF) par-dessus
   - Les grandes sections en fond #00259E (hero de page, footer) utilisent un dégradé incliné très léger plutôt qu'un aplat : `linear-gradient(135deg, #00259e 0%, #001e7e 100%)` (le second ton est le même bleu ~20% plus foncé déjà utilisé pour le hover des boutons primaires). Usage actuel : le hero de chaque page (`.pt-hero`, `.rt-hero`, `.hp-hero`, `.mb-header`) et `.footer` (composant partagé `Footer.astro`).
-- Texte courant (corps) : #333333 sur fond clair #FAFAFA
-- Texte secondaire : #B1BCE0 — réservé aux textes ≥1.125rem ou décoratifs (numérotation, index)
+- Texte courant (corps) : #333333 sur fond clair #FFF9F4
+- Texte secondaire : #B1BCE0 — réservé aux textes ≥1.125rem ou décoratifs (numérotation, index), et au dégradé des icônes sur fond foncé (voir Icônes SVG)
 - Gris hairline : #e5e5e5 — bordures fines, filets de séparation, séparateurs de listes et cadres (tableaux, cartes)
+- **Pas de vert dans la charte** : l'ancien accent #ECF7E4 a été retiré. Là où il servait de hover sur fond blanc/foncé (`.btn--on-dark`, `.navlink--on-dark`, `.footer__social`), il est remplacé par #001E7E (même bleu foncé que le hover des boutons/navlinks sur fond clair) avec texte/icône blanc. Là où il servait de fond d'accent statique (`option-card__badge`, `scope-bullet--check` de `marque-blanche.astro`), il est remplacé par un aplat #00259E / texte blanc. Exception : la bulle "Discuter avec moi" au survol de la photo de la home (`.hp-hero__bubble`) utilise le vert WhatsApp #25D366 — couleur de marque ponctuelle, pas un retour de l'accent de charte, à ne pas réutiliser ailleurs sans accord. Ne pas réintroduire l'ancien vert d'accent sans accord explicite.
 
 ### Forme
 - Radius : 0, aucun arrondi nulle part (boutons, cartes, cadres, images)
@@ -52,18 +52,18 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 ### Boutons et CTA
 Base commune (toutes variantes) : Montserrat 600, 0.875rem, MAJUSCULES, letter-spacing +0.08em, padding 12px 24px, radius 0, transition 0.2-0.3s ease-out.
 
-- **Bouton primaire / CTA — fond clair** (classe `.btn--primary`) : à utiliser quand le bouton repose sur un fond clair (#FAFAFA) ou sans fond de section défini. Fond #00259E, texte blanc. Hover : fond #001E7E (bleu ~20% plus foncé), texte blanc inchangé.
-- **Bouton primaire / CTA — fond foncé** (classe `.btn--on-dark`) : à utiliser quand le bouton repose sur une section à fond #00259E (ou proche) — sinon le bouton `.btn--primary` devient invisible (bleu sur bleu). Fond blanc #FFFFFF, texte #00259E. Hover : fond #ECF7E4 (vert clair), texte #00259E inchangé (jamais blanc, pour rester lisible sur fond clair).
+- **Bouton primaire / CTA — fond clair** (classe `.btn--primary`) : à utiliser quand le bouton repose sur un fond clair (#FFF9F4) ou sans fond de section défini. Fond #00259E, texte blanc. Hover : fond #001E7E (bleu ~20% plus foncé), texte blanc inchangé.
+- **Bouton primaire / CTA — fond foncé** (classe `.btn--on-dark`) : à utiliser quand le bouton repose sur une section à fond #00259E (ou proche) — sinon le bouton `.btn--primary` devient invisible (bleu sur bleu). Fond blanc #FFFFFF, texte #00259E. Hover : fond #001E7E (même bleu foncé que le hover des boutons sur fond clair), texte blanc.
   - Cas d'usage actuel : CTA du hero de chaque page à fond foncé (`index.astro`, `pme-techniques.astro`, `redaction-technique.astro`, `marque-blanche.astro`).
-  - Même logique pour les boutons icône seule sur fond foncé (icônes réseaux `.footer__social` dans `Footer.astro`, fond bleu partout) : fond blanc/icône #00259E au repos, fond #ECF7E4/icône #00259E au hover — jamais de hover à #00259E, qui se fondrait dans le fond de section.
-- Bouton secondaire : fond blanc plein #FFFFFF (jamais transparent), bordure 1px #00259E, texte #00259E, quel que soit le fond. Hover : fond #00259E, texte blanc, bordure #00259E.
+  - Même logique pour les boutons icône seule sur fond foncé (icônes réseaux `.footer__social` dans `Footer.astro`, fond bleu partout) : fond blanc/icône #00259E au repos, fond #001E7E/icône blanche au hover.
+- Bouton secondaire : fond blanc plein #FFFFFF (jamais transparent), bordure 1px #00259E, texte #00259E, quel que soit le fond. Hover : fond #001E7E (même bleu foncé que le hover des boutons primaires/`.btn--on-dark`, pour un hover cohérent quel que soit le bouton), texte blanc, bordure #001E7E.
 
 ### Navigation
 - Navlinks : même principe que les boutons primaires, avec les deux mêmes variantes selon le fond — plus petit : 0.75rem, padding 8px 16px.
   - **Fond clair** (classe `.navlink`) : fond #00259E, texte blanc. Hover : fond #001E7E, texte blanc.
-  - **Fond foncé** (classe `.navlink--on-dark`) : fond blanc #FFFFFF, texte #00259E. Hover : fond #ECF7E4, texte #00259E.
-- **Navbar** (composant `Topbar.astro`, utilisé sur **toutes** les pages, y compris `404.astro` et `projets/[slug].astro`) : nom "Alexandre Lobo" à gauche (petites capitales simulées via `.small-caps-first` + `.small-caps-rest` — la première lettre reste en taille normale, le reste du mot est réduit et mis en majuscules ; `.small-caps-first` n'a volontairement aucune règle CSS), liens de nav + bouton "Écrire" groupés à droite (`.topbar__actions`).
-  - Props : `href` (mailto du bouton CTA, obligatoire), `label` (texte du bouton, défaut "Écrire"), `variant` (`"on-dark"` par défaut ou `"on-light"` — pilote `.navlink--on-dark` vs `.navlink`, à choisir selon le fond de la section qui contient la navbar), `links` (tableau `{label, href}[]`, défaut = les 3 liens du site : Sites web → `/pme-techniques`, Rédaction technique → `/redaction-technique`, Projets → `/projets`). Ne pas redéclarer ce tableau dans chaque page : le défaut suffit, `links` ne sert qu'à override.
+  - **Fond foncé** (classe `.navlink--on-dark`) : fond blanc #FFFFFF, texte #00259E. Hover : fond #001E7E, texte blanc.
+- **Navbar** (composant `Topbar.astro`, utilisé sur **toutes** les pages, y compris `404.astro` et `projets/[slug].astro`) : nom "Alexandre Lobo" à gauche (petites capitales simulées via `.small-caps-first` + `.small-caps-rest` — la première lettre reste en taille normale, le reste du mot est réduit et mis en majuscules ; `.small-caps-first` n'a volontairement aucune règle CSS), liens de nav + bouton "Me contacter" groupés à droite (`.topbar__actions`).
+  - Props : `href` (mailto du bouton CTA, obligatoire), `label` (texte du bouton, défaut "Me contacter"), `variant` (`"on-dark"` par défaut ou `"on-light"` — pilote `.navlink--on-dark` vs `.navlink`, à choisir selon le fond de la section qui contient la navbar), `links` (tableau `{label, href}[]`, défaut = les 3 liens du site : Sites web → `/pme-techniques`, Rédaction technique → `/redaction-technique`, Projets → `/projets`). Ne pas redéclarer ce tableau dans chaque page : le défaut suffit, `links` ne sert qu'à override.
   - Les liens de nav sont stylés comme des boutons (même classe que le CTA), pas comme du texte simple — décision explicite pour un rendu plus affirmé qu'un lien texte + losanges.
   - Sur mobile (`≤640px`) : `.topbar__navlinks` passe en `display: none`, seuls le nom et le bouton CTA restent visibles — il n'existe pas de menu burger sur ce site ; si une 4e page de contenu s'ajoute un jour au point de rendre ce choix insuffisant, prévoir un menu mobile plutôt que d'empiler plus de boutons.
 
@@ -75,28 +75,28 @@ Remplace l'eyebrow pour les libellés courts et isolés (mot-clé unique, label 
 - Forme : rectangle légèrement arrondi, border-radius 6px, padding 3px 8px
 - Texte : Montserrat 600 (jamais 700, voir règle gras lourd), 0.875rem, MAJUSCULES, letter-spacing +0.04em, couleur blanche, centré
   - `font-variant-caps: all-small-caps` appliqué en plus, mais **sans effet visuel réel** : Montserrat n'a pas de glyphes small-caps (feature OpenType `smcp`), et le texte est déjà entièrement en majuscules (text-transform: uppercase) donc il n'y a pas de bas-de-casse à convertir. De vraies small-caps ne sont pas réalisables avec cette police — seule la mise en majuscules classique s'applique.
-- Fond : bleu primaire plein (#00259E), fixe — badge pensé pour un fond clair (#FAFAFA). Pas encore de variante fond foncé à ce jour (aucun badge actuel n'est posé sur une section bleue) — au besoin, créer `.badge--on-dark` sur le modèle de l'ancienne version (fond #ECF7E4, texte #1A2B6B), par cohérence avec `.btn--on-dark` / `.navlink--on-dark`.
+- Fond : bleu primaire plein (#00259E), fixe — badge pensé pour un fond clair (#FFF9F4). Pas encore de variante fond foncé à ce jour (aucun badge actuel n'est posé sur une section bleue).
 - Reflet : un halo blanc (`::before`, dégradé transparent → blanc 90% → transparent, `mix-blend-mode: screen`) glisse par-dessus de gauche à droite via `left`, contenu par `overflow: hidden` sur le badge. Passage (~1.5s) puis pause (~3.5s) hors du cadre, boucle infinie (cycle total 5s). Le halo est garanti invisible au repos car sa position de pause (`left: 125%`) le place entièrement hors des bornes du badge — contrairement à l'ancienne implémentation en `background-position`/`background-size` qui laissait un trait blanc résiduel visible au repos.
-- Usage actuel : `CompactLabel.astro` (eyebrows de section, ex. "Ce que je fais", "Offres", "Travaux"), la liste de types de contenu de `redaction-technique.astro` (`.rt-badge-row`), et le petit bouton "Voir" d'une citation scientifique — sur la home (`.hp-citation__badge`) et sur `pme-techniques.astro` (`.pt-citation__badge`, même lien DOI) — un `<a class="badge">` cliquable, le badge peut être un lien, pas seulement un span statique.
-- **Exception fond vert** : `.rt-badge-row--green .badge` (section "Ce que je rédige" de `redaction-technique.astro`) override le fond en #ECF7E4 / texte #00259E, scopée à cette page uniquement via une classe locale — décision explicite ponctuelle, ne pas généraliser sans le demander (voir "Ne jamais introduire une couleur hors charte" ; ici #ECF7E4 reste dans la charte, seul son usage en fond de badge est une exception documentée).
+- Usage actuel : `CompactLabel.astro` (eyebrows de section, ex. "Ce que je fais", "Offres", "Travaux"), la liste de types de contenu de `redaction-technique.astro` (`.rt-badge-row`, fond bleu standard — l'ancienne variante `.rt-badge-row--green` en fond vert a été retirée avec le vert de la charte), et le petit bouton "Voir" d'une citation scientifique — sur la home (`.hp-citation__badge`) et sur `pme-techniques.astro` (`.pt-citation__badge`, même lien DOI) — un `<a class="badge">` cliquable, le badge peut être un lien, pas seulement un span statique.
 
 ### Icônes SVG
 Pas d'animation/reflet sur les icônes — testé, abandonné après plusieurs allers-retours infructueux (voir historique). En revanche, traitement couleur en dégradé (statique) via masque CSS, pas de flat color :
 - Icônes fournies en fichiers dans `src/icons/` (fond de badge arrondi + glyphe blanc intégrés au dessin, `fill="white"` sur tous les paths). Importées via `import xUrl from "../icons/x-icon.svg?url"`, jamais inlinées en JSX/markup brut.
 - Appliquées en `mask-image` (+ `-webkit-mask-image`) sur un élément avec `background: <dégradé>` — classes utilitaires globales `.icon-mask` (`mask-size/position/repeat`) + `.icon-mask--on-dark` / `.icon-mask--on-light` (le dégradé lui-même), définies dans `Layout.astro`.
   - **Piège CSS important** : `mask-image: url(var(--x))` est invalide (un `var()` ne peut pas être substitué à l'intérieur d'un `url()` non quoté — la tokenisation de `url()` a lieu avant la substitution). Il faut que la custom property contienne déjà `url(...)` en entier : construire la valeur en JS (`` `url("${iconUrl}")` ``) et la passer telle quelle via `define:vars`, puis référencer simplement `mask-image: var(--x)` en CSS.
-- Dégradé sur fond sombre (`.icon-mask--on-dark`) : `linear-gradient(90deg, #ffffff 0%, #ecf7e4 10%, #ecf7e4 90%, #ffffff 100%)`.
+- Dégradé sur fond sombre (`.icon-mask--on-dark`) : `linear-gradient(90deg, #ffffff 0%, #b1bce0 10%, #b1bce0 90%, #ffffff 100%)` (le vert #ecf7e4 d'origine a été retiré avec le vert de la charte, remplacé par le bleu "texte secondaire" déjà documenté).
 - Dégradé sur fond clair (`.icon-mask--on-light`) : `linear-gradient(90deg, #4f69b8 0%, #00259e 100%)`.
 - Usage actuel : icônes du H1 du hero de `pme-techniques.astro` (web + atome, atome incliné à 4°), et les 3 icônes des cards de la section "Ce que je fais" (`langage` — réutilise le fichier `structure-icon.svg` en attendant une icône dédiée, `parcours`, `univers`). Les icônes `concurrence`, `roi` et `retard` existent encore dans `src/icons/` mais ne sont plus utilisées depuis la suppression de la section "Chaque mois sans stratégie web claire".
 - **Règle importante** : ne jamais modifier/retirer des paths d'une icône fournie par l'utilisateur, même si une forme semble être un artefact indésirable (ex. un fond de badge intégré au dessin) — c'est un contenu fourni, pas du code à corriger. Vérifier visuellement et demander confirmation avant tout changement de ce type.
 
 ### Cards et hover (cards cliquables)
-Pattern répété sur toutes les grilles de cards cliquables ou à mise en avant parallèle (`.pt-card`, `.rt-card`, `.hp-door`) : un reflet diagonal, subtil et rapide traverse la card au survol.
+Pattern répété sur toutes les grilles de cards cliquables ou à mise en avant parallèle (`.pt-card`, `.rt-card`, `.pt-offer`) : un reflet diagonal, subtil et rapide traverse la card au survol.
 - `position: relative; overflow: hidden` sur la card, un `::before` en `position: absolute` (bande de 40% de largeur, `left: -60%` au repos) avec `background: linear-gradient(135deg, rgba(0,37,158,0) 0%, rgba(0,37,158,0.025) 50%, rgba(0,37,158,0) 100%)` — l'angle 135deg donne la diagonale, l'opacité très faible (0.025) le côté subtil (fond de card blanc sur fond de page à peine plus gris, donc un reflet trop marqué jure).
 - Au hover, `animation: <nom>-shine 0.35s ease-out` anime `left` de `-60%` à `120%` — un seul passage rapide, pas de boucle (contrairement au reflet du badge qui boucle en continu).
-- Chaque page qui l'utilise redéfinit son propre `@keyframes` (`card-shine`, `rt-card-shine`, `hp-door-shine`) plutôt que de partager une seule keyframe globale — ce n'est pas un oubli : les noms sont scopés par page comme le reste du CSS Astro, dupliquer 8 lignes de keyframes est moins risqué que sortir une seule animation globale que toutes les pages devraient importer.
-- Sur les cards qui sont aussi des liens (`.pt-offer--link`, `.hp-door`), le hover ajoute en plus un soulignement du titre et un `border-color: #00259e` — le reflet seul ne suffit pas à signaler la cliquabilité.
-- Ne pas ajouter ce hover à des cards non cliquables (ex. `.option-card` de `marque-blanche.astro`, `.rt-pricing-item`) : un effet de survol sur un élément non actionnable induit en erreur sur l'affordance.
+- Chaque page qui l'utilise redéfinit son propre `@keyframes` (`card-shine`, `rt-card-shine`, `pt-offer-shine`…) plutôt que de partager une seule keyframe globale — ce n'est pas un oubli : les noms sont scopés par page comme le reste du CSS Astro, dupliquer 8 lignes de keyframes est moins risqué que sortir une seule animation globale que toutes les pages devraient importer.
+- Sur les cards qui sont aussi des liens (`.pt-offer--link`), le hover ajoute en plus un soulignement du titre et un `border-color: #00259e` — le reflet seul ne suffit pas à signaler la cliquabilité.
+- Par défaut, ne pas ajouter ce hover à des cards non cliquables (ex. `.option-card` de `marque-blanche.astro`, `.rt-pricing-item`) : un effet de survol sur un élément non actionnable induit en erreur sur l'affordance.
+  - **Exception demandée explicitement** : `.hp-pitch-card` (section "Pourquoi moi" de la home, 3 cards statiques sans lien) a le même reflet + `border-color` au survol malgré l'absence de clic — décision ponctuelle de l'utilisateur, ne pas généraliser la pratique à d'autres cards non cliquables sans demande équivalente.
 
 ### Images
 - Aucun arrondi, aucune ombre, aucune bordure
@@ -111,12 +111,13 @@ Pattern répété sur toutes les grilles de cards cliquables ou à mise en avant
 ### Animations et interactions
 - Registre sobre et lent : transitions 0.2-0.4s, easing ease-out
 - Autorisé : fondu à l'apparition au scroll, hovers définis ci-dessus
-- Interdit : rebonds, parallaxe agressive, rotations, confettis, curseurs custom
+- Interdit par défaut : rebonds, parallaxe agressive, rotations, confettis, curseurs custom
+  - **Exception demandée explicitement** : la photo de profil du hero de la home (`.hp-hero__photo`) est fixe (un flottement en huit a été testé puis retiré — jugé pas assez fluide malgré plusieurs itérations) et pulse doucement via un halo blanc (`@keyframes hp-glow` sur `box-shadow`, `rgba(255,255,255,0.15)` à `rgba(255,255,255,0.3)`/18px de diffusion, 5s ease-in-out infinite — volontairement discret et lent, une première version plus intense/rapide a été jugée trop forte). Un petit badge rond vert WhatsApp (`.hp-hero__ping`, icône blanche, coin haut-droit de la photo) apparaît puis disparaît en boucle (`@keyframes hp-ping`, fade + scale 0.6→1, 6s dont ~30% du cycle visible) pour évoquer une notification de message. Le lien qui contient la photo (`.hp-hero__photo-link`) affiche en plus un curseur custom au survol — une bulle "Discuter avec moi" (fond vert WhatsApp #25D366, texte blanc, `border-radius: 999px` — seule exception à la règle "radius 0" de la section Forme, volontaire pour une forme de bulle) qui suit la souris via JS (`astro:page-load` + `mousemove`) et remplace le curseur natif (`cursor: none`), pour amener vers WhatsApp. Décision ponctuelle de l'utilisateur sur cet élément précis, ne pas généraliser le curseur custom ou le radius plein à d'autres éléments sans demande équivalente.
 
 ### Principes d'application
 - Ne jamais introduire une couleur hors charte sans accord explicite
-- #ECF7E4 réservée au hover des boutons/navlinks sur fond foncé et aux badges/icônes d'accent — jamais en fond de section ou bloc de texte
-- Sur fond #FAFAFA : titres en #00259E, corps en #333333, boutons/navlinks en variante fond clair (`.btn--primary` / `.navlink`)
+- Pas de vert dans la charte (voir Couleurs) — le hover des boutons/navlinks sur fond foncé est #001E7E, pas un accent clair
+- Sur fond #FFF9F4 : titres en #00259E, corps en #333333, boutons/navlinks en variante fond clair (`.btn--primary` / `.navlink`)
 - Sur fond #00259E : titres et corps en blanc, boutons/CTA en variante fond foncé (`.btn--on-dark`, blanc/#00259E), et boutons secondaires qui restent blancs
 - Le letter-spacing -0.04em ne s'applique plus qu'au H1 ; H2/H3 sont à -0.03em, aligné sur le corps de texte (voir Échelle typographique)
 
@@ -144,7 +145,8 @@ Chaque section (`<section>`) doit contenir exactement un titre de niveau h2 dans
 
 - **Fait** : `Topbar.astro` extrait en composant partagé (nom + navlinks + CTA) réutilisé sur toutes les pages avec des valeurs par défaut centralisées (`DEFAULT_LINKS`) — c'était la seule vraie duplication identique à 100 % avant extraction.
 - **Fait** : `CompactLabel.astro` porte maintenant la logique du h2 invisible (`srHeading`) au lieu que chaque page répète `<CompactLabel /><h2 class="sr-only">` avec le même texte.
-- **Envisagé puis écarté — pas de composant `<Hero>` ou `<Card>` partagé** : les 4 héros de page (`.pt-hero`, `.rt-hero`, `.hp-hero`, `.mb-header`) et les grilles de cards (`.pt-card`, `.rt-card`, `.hp-door`, `.option-card`, `.rt-pricing-item`) se ressemblent visuellement mais diffèrent chacun sur un point structurel (présence d'un sous-titre, d'un CTA, d'un eyebrow, d'un hover, d'une icône…). Les factoriser demanderait soit un composant à props nombreuses et conditionnelles, soit une classe globale trop générique pour rester lisible — les deux vont à l'encontre du principe du projet de préférer un peu de répétition à une abstraction prématurée. À reconsidérer seulement si une 5e ou 6e page reprend exactement la même forme sans variation.
+- **Fait** : `WhatsAppIcon.astro` extrait (prop `size`) pour remplacer le même path SVG dupliqué 3 fois à l'identique (`Footer.astro`, et deux fois dans le hero de la home) — vraie duplication, pas une abstraction prématurée.
+- **Envisagé puis écarté — pas de composant `<Hero>` ou `<Card>` partagé** : les 4 héros de page (`.pt-hero`, `.rt-hero`, `.hp-hero`, `.mb-header`) et les grilles de cards (`.pt-card`, `.rt-card`, `.hp-pitch-card`, `.option-card`, `.rt-pricing-item`) se ressemblent visuellement mais diffèrent chacun sur un point structurel (présence d'un sous-titre, d'un CTA, d'un eyebrow, d'un hover, d'une icône…). Les factoriser demanderait soit un composant à props nombreuses et conditionnelles, soit une classe globale trop générique pour rester lisible — les deux vont à l'encontre du principe du projet de préférer un peu de répétition à une abstraction prématurée. À reconsidérer seulement si une 5e ou 6e page reprend exactement la même forme sans variation.
 - **Dette mineure connue, non bloquante** : plusieurs pages (`pme-techniques.astro`, `redaction-technique.astro`, `index.astro`, `marque-blanche.astro`) redéfinissent des règles de titre/corps quasi identiques sous des préfixes différents (`.pt-h2`, `.rt-h2`, `.hp-h2`, `.mb-header__title`, `.pt-body`, `.rt-body`, `.hp-body`…) — dupliquées à l'identique par page plutôt que globalisées, pour la même raison que ci-dessus (chaque page doit pouvoir dévier sans toucher aux autres). Si une règle typographique de base change (ex. `line-height` du corps de texte), il faut la répercuter manuellement dans chaque fichier concerné — pas de mécanisme de synchronisation automatique aujourd'hui.
 
 ## Documentation
@@ -163,3 +165,4 @@ Consult these guides before working on related tasks:
 ## Notes de contenu
 
 - La home (`src/pages/index.astro`) présente un aperçu de 4 projets choisis à la main (Gemilio, Yann Mokoko, Le Pari's, Quiet Details) — pas les 4 premiers par `order`. Le portfolio complet reste sur `/projets`.
+- Les projets peuvent être masqués sans être supprimés via `hidden: true` dans leur frontmatter (champ `hidden` du schema `content.config.ts`, défaut `false`). Un projet `hidden` est exclu de `/projets`, du pager précédent/suivant d'une page projet, et n'a même plus de route générée (`getStaticPaths` de `projets/[slug].astro` le filtre) — le fichier markdown et ses images restent dans le repo, juste plus servis. Usage actuel : `cafes-geographiques.md`, `kom-jm.md`.

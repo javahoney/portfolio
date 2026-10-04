@@ -2,6 +2,7 @@
 name: "Cafés Géographiques"
 category: "Géographie et géopolitique"
 order: 2
+hidden: true
 overview: "Les Cafés Géographiques réunissent chaque mois curieux et experts pour débattre de géographie et de géopolitique. À Paris et en province, depuis 1999. Plus de 1 000 articles, 320 lecteurs par jour."
 services: ["Prototypage", "Refonte", "Design system", "UI/UX", "Prototypes interactifs"]
 liveUrl: "https://cafes-geo-maquette-v2.netlify.app/"

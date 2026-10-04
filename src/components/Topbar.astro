@@ -17,7 +17,7 @@ const DEFAULT_LINKS: NavLink[] = [
 	{ label: "Projets", href: "/projets" },
 ];
 
-const { href, label = "Écrire", variant = "on-dark", links = DEFAULT_LINKS } = Astro.props;
+const { href, label = "Me contacter", variant = "on-dark", links = DEFAULT_LINKS } = Astro.props;
 const isOnLight = variant === "on-light";
 const linkClass = isOnLight ? "navlink" : "navlink--on-dark";
 ---
