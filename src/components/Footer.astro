@@ -38,7 +38,7 @@ const whatsappHref = "https://wa.me/33773532515";
 	</div>
 
 	<div class="footer__bottom">
-		<p class="footer__bottom-text">© 2026 · Alexandre Lobo · SIRET 989 159 660 00012</p>
+		<p class="footer__bottom-text">© 2026 · Alexandre Lobo · <a class="footer__legal" href="/mentions-legales">Mentions</a></p>
 		<p class="footer__bottom-text">Basé à Orléans · À distance dans toute la France</p>
 	</div>
 </footer>
@@ -133,6 +133,18 @@ const whatsappHref = "https://wa.me/33773532515";
 		line-height: 1.5;
 		letter-spacing: -0.03em;
 		color: #b1bce0;
+	}
+
+	.footer__legal {
+		color: inherit;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		transition: text-decoration-thickness 0.2s ease-out, color 0.2s ease-out;
+	}
+
+	.footer__legal:hover {
+		color: #fff;
+		text-decoration-thickness: 2px;
 	}
 
 	@media (max-width: 900px) {

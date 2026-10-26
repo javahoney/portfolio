@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import Topbar from "../components/Topbar.astro";
+
+const email = "contact@alexandre-lobo.com";
+const mailtoHref = `mailto:${email}`;
+---
+
+<Layout
+	title="Mentions légales — Alexandre Lobo"
+	description="Mentions légales du site alexandre-lobo.com : éditeur, contact, directeur de la publication et hébergeur."
+	noindex
+>
+	<Topbar href={mailtoHref} variant="on-light" />
+
+	<main class="ml">
+		<p class="eyebrow">Informations légales</p>
+		<h1 class="ml__title">Mentions légales</h1>
+
+		<section class="ml__section">
+			<h2 class="ml__h2">Éditeur du site</h2>
+			<ul class="ml__list">
+				<li>Alexandre Lobo, auto-entrepreneur</li>
+				<li>SIRET : 989 159 660 00012</li>
+				<li>TVA non applicable, art. 293 B du CGI</li>
+				<li>Basé à Orléans</li>
+			</ul>
+		</section>
+
+		<section class="ml__section">
+			<h2 class="ml__h2">Contact</h2>
+			<ul class="ml__list">
+				<li><a href={mailtoHref}>{email}</a></li>
+				<li><a href="tel:+33773532515">07 73 53 25 15</a></li>
+			</ul>
+		</section>
+
+		<section class="ml__section">
+			<h2 class="ml__h2">Directeur de la publication</h2>
+			<p class="ml__text">Alexandre Lobo</p>
+		</section>
+
+		<section class="ml__section">
+			<h2 class="ml__h2">Hébergeur</h2>
+			<p class="ml__text">Cloudflare Pages</p>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.ml {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 96px 48px 160px;
+	}
+
+	.ml__title {
+		margin: 16px 0 64px;
+		font-family: "Montaga", serif;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		line-height: 1.05;
+		color: #00259e;
+		font-size: clamp(3rem, 5.5vw, 4.25rem);
+	}
+
+	.ml__section {
+		max-width: 720px;
+		padding: 24px 0 40px;
+		border-top: 1px solid #e5e5e5;
+	}
+
+	.ml__h2 {
+		margin: 0 0 16px;
+		font-family: "Montaga", serif;
+		font-weight: 400;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+		color: #00259e;
+		font-size: 1.5rem;
+	}
+
+	.ml__text,
+	.ml__list {
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.6;
+		letter-spacing: -0.03em;
+		color: #333333;
+	}
+
+	.ml__list {
+		padding: 0;
+		list-style: none;
+	}
+
+	.ml a {
+		color: #00259e;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		transition: text-decoration-thickness 0.2s ease-out;
+	}
+
+	.ml a:hover {
+		text-decoration-thickness: 2px;
+	}
+
+	@media (max-width: 640px) {
+		.ml {
+			padding: 64px 12px 96px;
+		}
+
+		.ml__title {
+			font-size: 2.5rem;
+			margin-bottom: 40px;
+		}
+	}
+</style>
